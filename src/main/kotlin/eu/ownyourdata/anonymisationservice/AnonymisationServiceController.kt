@@ -1,5 +1,6 @@
 package eu.ownyourdata.anonymisationservice
 
+import eu.ownyourdata.anonymisationservice.dto.RequestDTO
 import org.springframework.web.bind.annotation.GetMapping
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
@@ -25,7 +26,7 @@ class AnonymisationServiceController {
     }
 
     @PutMapping("/api/anonymise")
-    fun anonymiseRequest(@RequestBody body: String): String {
+    fun anonymiseRequest(@RequestBody body: RequestDTO): String {
         return anonymise(body)
     }
 
