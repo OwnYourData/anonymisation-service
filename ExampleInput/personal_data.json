@@ -1,0 +1,122 @@
+{
+    "ontology": "https://soya.ownyourdata.eu/TODO",
+    "data":[
+        {
+            "Name": "Name 1",
+            "Geburtsdatum": "1975-01-01",
+            "Adresse": "Musterstraße 5, 1010 Wien",
+            "SV-Nr.": "1234 567 891",
+            "Telefon": "0664 1234567",
+            "E-Mail": "mock.mock@example.com",
+            "Gehalt": 100000
+
+        },
+        {
+            "Name": "Name 2",
+            "Geburtsdatum": "1975-01-01",
+            "Adresse": "Musterstraße 5, 1010 Wien",
+            "SV-Nr.": "1234 567 891",
+            "Telefon": "0664 1234567",
+            "E-Mail": "mock.mock@example.com",
+            "Gehalt": 100000
+        },
+        {
+            "Name": "Name 3",
+            "Geburtsdatum": "1975-01-01",
+            "Adresse": "Musterstraße 5, 1010 Wien",
+            "SV-Nr.": "1234 567 891",
+            "Telefon": "0664 1234567",
+            "E-Mail": "mock.mock@example.com",
+            "Gehalt": 100000
+        },
+        {
+            "Name": "Name 4",
+            "Geburtsdatum": "1975-01-01",
+            "Adresse": "Musterstraße 5, 1010 Wien",
+            "SV-Nr.": "1234 567 891",
+            "Telefon": "0664 1234567",
+            "E-Mail": "mock.mock@example.com",
+            "Gehalt": 100000
+        },
+        {
+            "Name": "Name 5",
+            "Geburtsdatum": "1975-01-01",
+            "Adresse": "Musterstraße 5, 1010 Wien",
+            "SV-Nr.": "1234 567 891",
+            "Telefon": "0664 1234567",
+            "E-Mail": "mock.mock@example.com",
+            "Gehalt": 100000
+        },
+        {
+            "Name": "Name 6",
+            "Geburtsdatum": "1975-01-01",
+            "Adresse": "Musterstraße 5, 1010 Wien",
+            "SV-Nr.": "1234 567 891",
+            "Telefon": "0664 1234567",
+            "E-Mail": "mock.mock@example.com",
+            "Gehalt": 100000
+        },
+        {
+            "Name": "Name 7",
+            "Geburtsdatum": "1975-01-01",
+            "Adresse": "Musterstraße 5, 1010 Wien",
+            "SV-Nr.": "1234 567 891",
+            "Telefon": "0664 1234567",
+            "E-Mail": "mock.mock@example.com",
+            "Gehalt": 100000
+        },
+        {
+            "Name": "Name 8",
+            "Geburtsdatum": "1975-01-01",
+            "Adresse": "Musterstraße 5, 1010 Wien",
+            "SV-Nr.": "1234 567 891",
+            "Telefon": "0664 1234567",
+            "E-Mail": "mock.mock@example.com",
+            "Gehalt": 100000
+        },
+        {
+            "Name": "Name 9",
+            "Geburtsdatum": "1975-01-01",
+            "Adresse": "Musterstraße 5, 1010 Wien",
+            "SV-Nr.": "1234 567 891",
+            "Telefon": "0664 1234567",
+            "E-Mail": "mock.mock@example.com",
+            "Gehalt": 100000
+        },
+        {
+            "Name": "Name 10",
+            "Geburtsdatum": "1975-01-01",
+            "Adresse": "Musterstraße 5, 1010 Wien",
+            "SV-Nr.": "1234 567 891",
+            "Telefon": "0664 1234567",
+            "E-Mail": "mock.mock@example.com",
+            "Gehalt": 100000
+        }
+    ],
+    "configuration":{
+        "Name": {
+            "anonymisationType": "Masking",
+            "dataType": "String"
+        },
+        "Geburtsdatum": {
+            "anonymisationType": "Generalization",
+            "dataType": "Date"
+        },
+        "Adresse": {
+            "anonymisationType": "Generalization",
+            "dataType": "Address"
+        },
+        "SV-Nr.": {
+            "anonymisationType": "Masking",
+            "dataType": "String"
+        },
+        "E-Mail": {
+            "anonymisationType": "Masking",
+            "dataType": "String"
+        },
+        "Gehalt": {
+            "anonymisationType": "Randomization",
+            "dataType": "String"
+        }
+    }
+}
