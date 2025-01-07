@@ -8,10 +8,10 @@ fun createErrorResponse(errorMessage: String): ResponseEntity<String> {
     val builder = Json.createObjectBuilder()
     builder.add("version", Anonymisation.VERSION)
     builder.add("valid", false)
-    builder.add("erroreMessage", errorMessage)
+    builder.add("errorMessage", errorMessage)
     return ResponseEntity(
         builder.build().toString(),
-        HttpStatus.BAD_GATEWAY
+        HttpStatus.BAD_REQUEST
     )
 }
 
@@ -27,6 +27,7 @@ fun createValidResponse(data: List<Map<String, Any>>): ResponseEntity<String> {
         }
         arrayBuilder.add(jsonObject)
     }
+    builder.add("anonymisedData", arrayBuilder)
     return ResponseEntity(
         builder.build().toString(),
         HttpStatus.ACCEPTED
