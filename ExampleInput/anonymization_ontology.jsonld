@@ -114,6 +114,11 @@
             "@id": "soya:Generalization",
             "@type": "owl:Class",
             "subClassOf": "Anonymization"
+        },
+        {
+            "@id": "soya:Randomiztion",
+            "@type": "owl:Class",
+            "subClassOf": "Anonymization"
         }
     ],
     "@context": {
