@@ -1,6 +1,6 @@
 package eu.ownyourdata.anonymisationservice.anonymiser
 
-abstract class Generalization<T>: Anonymiser<T> {
+abstract class Generalization: Anonymiser {
 
     // TODO include general Helper functions for generalization
 }

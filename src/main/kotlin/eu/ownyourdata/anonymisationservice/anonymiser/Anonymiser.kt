@@ -1,6 +1,6 @@
 package eu.ownyourdata.anonymisationservice.anonymiser
 
-fun anonymizerFactory(anonymisationType: String, dataType: String): Anonymiser<*> {
+fun anonymizerFactory(anonymisationType: String, dataType: String): Anonymiser {
     if(anonymisationType == "Masking") {
         return Masking()
     } else if(anonymisationType == "Generalization") {
@@ -18,7 +18,11 @@ fun anonymizerFactory(anonymisationType: String, dataType: String): Anonymiser<*
     }
 }
 
-interface Anonymiser<T> {
+interface Anonymiser {
 
-    fun anonymise(values: List<T>): List<T>
+
+    /**
+     * The function has the input and return parameter any as the input validation takes place in the specific functions
+     */
+    fun anonymise(values: MutableList<Any>): List<Any>
 }

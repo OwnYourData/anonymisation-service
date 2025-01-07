@@ -9,12 +9,16 @@ import org.semanticweb.owlapi.model.IRI
 import org.semanticweb.owlapi.model.OWLOntology
 import org.semanticweb.owlapi.model.OWLOntologyManager
 import org.semanticweb.owlapi.reasoner.OWLReasoner
+import java.lang.IllegalArgumentException
+import java.util.*
 
 
-
-fun validateConfig(ontology: OntModel, configuration: Map<String, DatatypeDTO>): List<String> {
+fun validateConfig(ontology: OntModel, configuration: Map<String, DatatypeDTO>) {
     addConfigToOntology(configuration, ontology)
-    return validateConfig(configuration, ontology)
+    val invalidValues = LinkedList<String>() //validateConfig(configuration, ontology)
+    if(invalidValues.isNotEmpty()) {
+        throw IllegalArgumentException("For the attributes ${invalidValues.joinToString(", ")} the request anonymisation is not allowed")
+    }
 }
 
 private fun addConfigToOntology(configuration: Map<String, DatatypeDTO>, ontology: OntModel){

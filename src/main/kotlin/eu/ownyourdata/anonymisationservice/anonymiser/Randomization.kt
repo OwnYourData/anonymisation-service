@@ -1,6 +1,6 @@
 package eu.ownyourdata.anonymisationservice.anonymiser
 
-abstract class Randomization<T>: Anonymiser<T> {
+abstract class Randomization: Anonymiser {
 
     // TODO include general functions for randomization
 }

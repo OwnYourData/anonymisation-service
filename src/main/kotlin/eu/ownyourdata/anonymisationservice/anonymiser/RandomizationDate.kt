@@ -2,9 +2,9 @@ package eu.ownyourdata.anonymisationservice.anonymiser
 
 import java.util.*
 
-class RandomizationDate: Randomization<Date>() {
+class RandomizationDate: Randomization() {
 
-    override fun anonymise(values: List<Date>): List<Date> {
+    override fun anonymise(values: MutableList<Any>): List<Any> {
         // TODO: implement randomization for date values
         return values;
     }

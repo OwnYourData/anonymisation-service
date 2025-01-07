@@ -7,6 +7,7 @@ import kotlinx.serialization.json.put
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RestController
 import eu.ownyourdata.anonymisationservice.service.anonymise
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RequestBody
 
 
@@ -26,7 +27,7 @@ class AnonymisationServiceController {
     }
 
     @PutMapping("/api/anonymise")
-    fun anonymiseRequest(@RequestBody body: RequestDTO): String {
+    fun anonymiseRequest(@RequestBody body: RequestDTO): ResponseEntity<String> {
         return anonymise(body)
     }
 
