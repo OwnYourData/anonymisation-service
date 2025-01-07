@@ -1,0 +1,129 @@
+{
+    "@graph": [
+        {
+            "@id": "Name",
+            "@type": "owl:Class",
+            "owl:equivalentClass": {
+                "@type": "owl:Restriction",
+                "owl:onProperty": { "@id":  "soya:anonymizationType" },
+                "owl:someValuesFrom": {
+                    "@type": "soya:Anonymization",
+                    "owl:oneOf": {
+                        "@list": [
+                            { "@id":  "soya:Masking" }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "@id": "Geburtsdatum",
+            "@type": "xsd:date",
+            "owl:equivalentClass": {
+                "@type": "owl:Restriction",
+                "owl:onProperty": { "@id":  "soya:anonymizationType" },
+                "owl:someValuesFrom": {
+                    "@type": "soya:Anonymization",
+                    "owl:oneOf": {
+                        "@list": [
+                            { "@id":  "soya:Masking" },
+                            { "@id":  "soya:Generalization"},
+                            { "@id":  "soya:Randomization"}
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "@id": "Adresse",
+            "@type": "xsd:string",
+            "owl:equivalentClass": {
+                "@type": "owl:Restriction",
+                "owl:onProperty": { "@id":  "soya:anonymizationType" },
+                "owl:someValuesFrom": {
+                    "@type": "soya:Anonymization",
+                    "owl:oneOf": {
+                        "@list": [
+                            { "@id":  "soya:Masking" },
+                            { "@id":  "soya:Generalization"}
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "@id": "SV-Nr.",
+            "@type": "string",
+            "owl:equivalentClass": {
+                "@type": "owl:Restriction",
+                "owl:onProperty": { "@id":  "soya:anonymizationType" },
+                "owl:someValuesFrom": {
+                    "@type": "soya:Anonymization",
+                    "owl:oneOf": {
+                        "@list": [
+                            { "@id":  "soya:Masking" }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "@id": "E-Mail",
+            "@type": "string",
+            "owl:equivalentClass": {
+                "@type": "owl:Restriction",
+                "owl:onProperty": { "@id":  "soya:anonymizationType" },
+                "owl:someValuesFrom": {
+                    "@type": "soya:Anonymization",
+                    "owl:oneOf": {
+                        "@list": [
+                            { "@id":  "soya:Masking" }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "@id": "Gehalt",
+            "@type": "xsd:double",
+            "owl:equivalentClass": {
+                "@type": "owl:Restriction",
+                "owl:onProperty": { "@id":  "soya:anonymizationType" },
+                "owl:someValuesFrom": {
+                    "@type": "soya:Anonymization",
+                    "owl:oneOf": {
+                        "@list": [
+                            { "@id":  "soya:Masking" },
+                            { "@id":  "soya:Generalization"},
+                            { "@id":  "soya:Randomization"}
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "@id": "soya:Anonymization",
+            "@type": "owl:Class"
+        },
+        {
+            "@id": "soya:Masking",
+            "@type": "owl:Class",
+            "subClassOf": "Anonymization"
+        },
+        {
+            "@id": "soya:Generalization",
+            "@type": "owl:Class",
+            "subClassOf": "Anonymization"
+        }
+    ],
+    "@context": {
+        "@base": "https://soya.ownyourdata.eu/OntologyEEG#",
+        "@import": "https://ns.ownyourdata.eu/ns/soya-context.json",
+        "@version": 1.1,
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "soya": "https://soya.ownyourdata.eu/OntologyEEG/soya#",
+        "owl": "http://www.w3.org/2002/07/owl#",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+    }
+}
