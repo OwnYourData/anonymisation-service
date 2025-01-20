@@ -4,11 +4,9 @@ import eu.ownyourdata.anonymisationservice.anonymiser.Anonymiser
 import eu.ownyourdata.anonymisationservice.anonymiser.anonymizerFactory
 import eu.ownyourdata.anonymisationservice.dto.DatatypeDTO
 import eu.ownyourdata.anonymisationservice.dto.RequestDTO
-import org.apache.commons.lang3.ObjectUtils.Null
-import org.apache.jena.ontology.OntModel
 import org.springframework.http.ResponseEntity
+import java.lang.IllegalArgumentException
 import java.util.HashMap
-import java.util.LinkedList
 
 
 /*
@@ -26,6 +24,8 @@ fun anonymise(body: RequestDTO): ResponseEntity<String> {
         )
         return createValidResponse(anonymisation.applyAnonymistation())
     } catch (e: Exception) {
+        println(e.localizedMessage)
+        e.stackTrace.forEach { m -> println(m.toString())}
         return createErrorResponse(e.localizedMessage)
     }
 
@@ -48,7 +48,7 @@ class Anonymisation(configuration: Map<String, DatatypeDTO>, val data: List<Map<
     fun applyAnonymistation(): List<Map<String, Any>> {
         val valuesPerAttribute = createValuesPerAttribute()
         val anonymisedValues = applyAnonymizater(anonymizer, valuesPerAttribute)
-        return LinkedList()
+        return createValuesPerInstance(anonymisedValues)
     }
 
     private fun initAnonymizer(configuration: Map<String, DatatypeDTO>): Map<String, Anonymiser> {
@@ -61,7 +61,7 @@ class Anonymisation(configuration: Map<String, DatatypeDTO>, val data: List<Map<
 
     private fun createValuesPerAttribute(): Map<String, MutableList<Any>> {
         val valuesPerAttribute = HashMap<String, MutableList<Any>>()
-        data.forEach { datapoint -> datapoint.entries.forEach { e ->
+        this.data.forEach { datapoint -> datapoint.entries.forEach { e ->
             if(valuesPerAttribute.containsKey(e.key)){
                 valuesPerAttribute[e.key]?.add(e.value)
             }else{
@@ -71,11 +71,30 @@ class Anonymisation(configuration: Map<String, DatatypeDTO>, val data: List<Map<
         return valuesPerAttribute
     }
 
+    private fun createValuesPerInstance(valuesPerAttribute: Map<String, List<Any>>): List<Map<String, Any>> {
+        val instances = ArrayList<MutableMap<String, Any>>()
+        for (i in 0 until valuesPerAttribute.values.first().size) {
+            instances.add(i, HashMap<String, Any>())
+        }
+        valuesPerAttribute.entries.forEach { attribute ->
+            for(i in 0 until attribute.value.size) {
+                instances.get(i)[attribute.key] = attribute.value[i]
+            }
+        }
+        return instances
+    }
+
     private fun applyAnonymizater(anonymiser: Map<String, Anonymiser>,
-                                  valuesPerAttribute: Map<String, MutableList<Any>>) {
+                                  valuesPerAttribute: Map<String, MutableList<Any>>): Map<String, List<Any>> {
         val anonymisedValues = HashMap<String, List<Any>>()
         valuesPerAttribute.entries.forEach { e ->
-            anonymisedValues[e.key] = anonymiser[e.key]!!.anonymise(e.value)
+            val anonymiserInstance = anonymiser[e.key]
+            if (anonymiserInstance != null) {
+                anonymisedValues[e.key] = anonymiserInstance.anonymise(e.value)
+            } else {
+                throw IllegalArgumentException("For the attribute ${e.key} no anonymiser is defined.")
+            }
         }
+        return anonymisedValues
     }
 }

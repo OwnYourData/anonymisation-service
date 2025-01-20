@@ -11,7 +11,7 @@ import java.io.StringWriter
 
 fun getOntology(url: String): OntModel {
     // TODO for now get content from file but change to request
-    val fileContent: InputStream = File("Beispiele/anonymization_ontology.jsonld").inputStream()
+    val fileContent: InputStream = File("Beispiele/anonymization_ontology.json").inputStream()
     val ontModel: OntModel = ModelFactory.createOntologyModel()
     RDFDataMgr.read(ontModel, fileContent, null, Lang.JSONLD)
     return ontModel
