@@ -13,22 +13,22 @@ import java.util.HashMap
 TODO: next steps
 * Anonymizer methods
 * Reasoning
+* Anonymization validation based on k-Anonymity and l-Diversity
  */
 
 fun anonymise(body: RequestDTO): ResponseEntity<String> {
-    try {
+    return try {
         validateConfig(getOntology(body.ontology), body.configuration)
         val anonymisation = Anonymisation(
             body.configuration,
             body.data
         )
-        return createValidResponse(anonymisation.applyAnonymistation())
+        createValidResponse(anonymisation.applyAnonymistation())
     } catch (e: Exception) {
         println(e.localizedMessage)
         e.stackTrace.forEach { m -> println(m.toString())}
-        return createErrorResponse(e.localizedMessage)
+        createErrorResponse(e.localizedMessage)
     }
-
 }
 
 class Anonymisation(configuration: Map<String, DatatypeDTO>, val data: List<Map<String, Any>>) {
@@ -78,7 +78,7 @@ class Anonymisation(configuration: Map<String, DatatypeDTO>, val data: List<Map<
         }
         valuesPerAttribute.entries.forEach { attribute ->
             for(i in 0 until attribute.value.size) {
-                instances.get(i)[attribute.key] = attribute.value[i]
+                instances[i][attribute.key] = attribute.value[i]
             }
         }
         return instances

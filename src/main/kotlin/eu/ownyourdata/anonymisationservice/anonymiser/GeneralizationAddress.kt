@@ -1,9 +1,9 @@
 package eu.ownyourdata.anonymisationservice.anonymiser
 
-class GeneralizationInteger: Generalization() {
+class GeneralizationAddress: Generalization() {
 
     override fun anonymise(values: MutableList<Any>): List<Any> {
-        // TODO implement generalization for integer and apply the casting to int
+        // TODO implement generalization for Address
         return values
     }
 }
