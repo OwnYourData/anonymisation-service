@@ -1,15 +1,59 @@
 package eu.ownyourdata.anonymisationservice.anonymiser
 
-import java.util.*
+import java.lang.IllegalArgumentException
 
-class GeneralizationAddress: Generalization<String>() {
-    override fun convertValues(index: Int, value: Any): Pair<Int, String> {
-        return Pair(index, "Test Value")
+class GeneralizationAddress: Anonymiser{
+
+    /** Address-Schema: "Musterstraße 1, 1010 Wien, Wien, Österreich", Possible future development:
+     * Include mapping from Zipcode to country in ontology
+    **/
+
+    override fun anonymise(values: MutableList<Any>): List<Any> {
+        val addresses = values.mapIndexed { index, address ->  Pair(index, parseAddress(address.toString()))}
+
+        val stateGroup = addresses.groupBy(
+                keySelector = { it.second.state },
+                valueTransform = { it.first }
+            )
+        val states = checkGeneralizationLevel(stateGroup)
+        if (!states.isNullOrEmpty()) return states
+
+        val countryGroups = addresses.groupBy(
+            keySelector = { it.second.country },
+            valueTransform = { it.first }
+        )
+        val countries = checkGeneralizationLevel(countryGroups)
+        if (!countries.isNullOrEmpty()) return countries
+
+        return values
     }
 
-    override fun getQuantileValues(numericValues: SortedMap<Int, Pair<IntArray, List<String>>>): Map<String, IntArray> {
-        return numericValues.map {(key, value) ->
-            key.toString() to value.first
-        }.toMap()
+    private fun checkGeneralizationLevel(generalization: Map<String, List<Int>>): List<String>? {
+        return if (generalization.values.minOfOrNull { e -> e.size }!! > 2 ){
+            generalization.flatMap { (str, indices) -> indices.map { index -> str to index }}
+                .sortedBy { pair -> pair.second }
+                .map { pair -> pair.first }
+                .toList()
+        } else {
+            null
+        }
+    }
+
+    private fun parseAddress(addressString: String): Address {
+        val parts = addressString.split(",").map { it.trim() }
+        return if (parts.size == 4) {
+            Address(
+                state = parts[2],
+                country = parts[3]
+            )
+        } else {
+            throw IllegalArgumentException("The value $addressString could not be parsed to an address as the type is " +
+                    "not 'Street Nr, Zip-Code City, State, Country")
+        }
     }
 }
+
+data class Address(
+    val state: String,
+    val country: String
+)
