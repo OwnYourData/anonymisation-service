@@ -8,8 +8,6 @@ import kotlin.math.sqrt
 class RandomizationNumeric: Randomization() {
 
     /**
-     * Grad der Randomization hängt von der Samplesize ab
-     * Es soll nicht mehr möglich sein einzelne Datenpunkte zu identifizieren
      * Eventuell noch eine unterschiedliche Implementierung für ratio und intervalue skaliert
      */
 

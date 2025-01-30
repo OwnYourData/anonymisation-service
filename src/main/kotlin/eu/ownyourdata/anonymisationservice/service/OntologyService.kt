@@ -17,7 +17,6 @@ fun getOntology(url: String): OntModel {
     return ontModel
 }
 
-// TODO potentially delete
 fun getModel(modelString: Map<String, String>): Model {
     val model = ModelFactory.createDefaultModel()
     model.setNsPrefix("soya", "https://soya.ownyourdata.eu/OntologyEEG/soya")

@@ -54,7 +54,6 @@ private fun createOWLOntology(manager: OWLOntologyManager, ontology: OntModel): 
 
 // Reasoning is not working as the config classes are interpreted as annotations not as named individuals
 // TODO: make sure that the classes are classes in OWL to enable reasoning
-// TODO: reasoning does not work at all, start working on anonymization and try again in some days
 private fun attributeComplied(attribute: String, r: OWLReasoner, manager: OWLOntologyManager): Boolean {
     if(attribute != "Name") return false
     val df = manager.owlDataFactory

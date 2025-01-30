@@ -11,9 +11,8 @@ import java.util.HashMap
 
 /*
 TODO: next steps
-* Anonymizer methods
 * Reasoning
-* Anonymization validation based on k-Anonymity and l-Diversity
+* Anonymization validation based on k-Anonymity and l-Diversity (for Generalization)
  */
 
 fun anonymise(body: RequestDTO): ResponseEntity<String> {

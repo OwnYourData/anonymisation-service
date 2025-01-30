@@ -13,7 +13,8 @@ class GeneralizationDate: Generalization<LocalDate>() {
         return when (value) {
             is String -> Pair(index, LocalDate.parse(value, formatter))
             is LocalDate -> Pair(index, value)
-            else -> throw IllegalArgumentException("Date Generalization was requested but the input $value is not numeric")
+            else ->
+                throw IllegalArgumentException("Date Generalization was requested but the input $value is not numeric")
         }
     }
 
