@@ -9,10 +9,11 @@ import java.lang.IllegalArgumentException
 import java.util.HashMap
 
 
-/*
-TODO: next steps
-* Reasoning
-* Anonymization validation based on k-Anonymity and l-Diversity (for Generalization)
+/**TODO: next steps
+ * Reasoning -> validate configuration with ontology
+ * Anonymization validation based on k-Anonymity and l-Diversity (for Generalization)
+ * Tests (same Testing concept as for Reasoning Service
+ * Documentation, focus on anonymization methods
  */
 
 fun anonymise(body: RequestDTO): ResponseEntity<String> {
@@ -36,7 +37,7 @@ class Anonymisation(configuration: Map<String, DatatypeDTO>, val data: List<Map<
 
     companion object {
         const val SOYA_URL = "https://soya.ownyourdata.eu/OntologyEEG/soya"
-        const val ONTOLOGY_URL = "https://soya.ownyourdata.eu/OntologyEEG/"
+        const val ONTOLOGY_URL = "https://soya.ownyourdata.eu/OntologyEEG"
         const val VERSION = "1.0.0"
     }
 

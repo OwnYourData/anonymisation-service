@@ -3,33 +3,44 @@ package eu.ownyourdata.anonymisationservice.service
 import eu.ownyourdata.anonymisationservice.dto.DatatypeDTO
 import org.apache.commons.io.IOUtils
 import org.apache.jena.ontology.OntModel
+import org.apache.jena.rdf.model.RDFList
+import org.apache.jena.rdf.model.Resource
+import org.apache.jena.vocabulary.OWL
 import org.semanticweb.HermiT.ReasonerFactory
 import org.semanticweb.owlapi.apibinding.OWLManager
 import org.semanticweb.owlapi.model.IRI
 import org.semanticweb.owlapi.model.OWLOntology
 import org.semanticweb.owlapi.model.OWLOntologyManager
 import org.semanticweb.owlapi.reasoner.OWLReasoner
-import java.lang.IllegalArgumentException
 import java.util.*
 
+/**
+ * Was ist das Ziel?
+ * Die Configuration soll validiert werden --> ob die gewünschten Operationen auch erlaubt sind
+ * Ansatz zum Fixen: die einzelnen Properties als Attribute festlegen
+ * Versuch: An dem Reasoning Service zu orientieren
+ */
 
 fun validateConfig(ontology: OntModel, configuration: Map<String, DatatypeDTO>) {
     addConfigToOntology(configuration, ontology)
-    val invalidValues = LinkedList<String>() //validateConfig(configuration, ontology)
+    val invalidValues = validateConfig(configuration, ontology)
     if(invalidValues.isNotEmpty()) {
-        throw IllegalArgumentException("For the attributes ${invalidValues.joinToString(", ")} the request anonymisation is not allowed")
+        throw IllegalArgumentException("For the attributes ${invalidValues.joinToString(", ")} the requested anonymisation is not allowed")
     }
 }
 
 private fun addConfigToOntology(configuration: Map<String, DatatypeDTO>, ontology: OntModel){
-    // ontology.setNsPrefix("soya", SOYA_URL)
-    // ontology.setNsPrefix("ontology", ONTOLOGY_URL)
-    configuration.entries.forEach { e -> ontology.add(
-        ontology.createClass(Anonymisation.SOYA_URL +"/"+e.key),
-        ontology.createProperty("${Anonymisation.SOYA_URL}#anonymizationType"),
-        ontology.createResource(Anonymisation.ONTOLOGY_URL +e.value.anonymisationType)
-    ) }
-    ontology.write(System.out)
+    configuration.entries.forEach { e ->
+        val ressource: Resource = ontology.createClass("${Anonymisation.SOYA_URL}/${e.key}")
+        val restriction: Resource = ontology.createResource(OWL.Restriction)
+        ressource.addProperty(OWL.equivalentClass, restriction)
+        restriction.addProperty(OWL.onProperty, ontology.createResource("${Anonymisation.SOYA_URL}#anonymizationType"))
+        val propertyList: RDFList = ontology.createList()
+            .with(ontology.createClass("${Anonymisation.SOYA_URL}#${e.value.anonymisationType}"))
+        val anonymusClass = ontology.createClass()
+        anonymusClass.addProperty(OWL.oneOf, propertyList)
+        restriction.addProperty(OWL.someValuesFrom, anonymusClass)
+    }
 }
 
 private fun validateConfig(configuration: Map<String, DatatypeDTO>, ontology: OntModel): List<String>{
@@ -48,22 +59,15 @@ private fun createOWLOntology(manager: OWLOntologyManager, ontology: OntModel): 
     )
     o.addAxioms(manager.loadOntologyFromOntologyDocument(axiomsIS).axioms())
     axiomsIS.close()
-    o.saveOntology(System.out)
     return o
 }
 
 // Reasoning is not working as the config classes are interpreted as annotations not as named individuals
-// TODO: make sure that the classes are classes in OWL to enable reasoning
+// TODO: when using two classes in the ontology it works
 private fun attributeComplied(attribute: String, r: OWLReasoner, manager: OWLOntologyManager): Boolean {
-    if(attribute != "Name") return false
     val df = manager.owlDataFactory
     val axiom = df.getOWLSubClassOfAxiom(
-        df.getOWLClass(IRI.create(Anonymisation.SOYA_URL +attribute)),
-        df.getOWLClass(IRI.create(Anonymisation.ONTOLOGY_URL +attribute)))
-    val axiom2 = df.getOWLSubClassOfAxiom(
-        df.getOWLClass(IRI.create(Anonymisation.SOYA_URL +attribute)),
-        df.getOWLClass(IRI.create(Anonymisation.ONTOLOGY_URL +attribute)))
-    println(r.isEntailed(axiom))
-    println(r.isEntailed(axiom2))
+        df.getOWLClass(IRI.create("${Anonymisation.SOYA_URL}/${attribute}")),
+        df.getOWLClass(IRI.create("${Anonymisation.ONTOLOGY_URL}/${attribute}")))
     return !r.isEntailed(axiom)
 }
