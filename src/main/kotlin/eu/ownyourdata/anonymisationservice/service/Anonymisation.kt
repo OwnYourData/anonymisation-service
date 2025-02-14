@@ -10,7 +10,6 @@ import java.util.HashMap
 
 
 /**TODO: next steps
- * Reasoning -> validate configuration with ontology
  * Anonymization validation based on k-Anonymity and l-Diversity (for Generalization)
  * Tests (same Testing concept as for Reasoning Service
  * Documentation, focus on anonymization methods
@@ -25,8 +24,6 @@ fun anonymise(body: RequestDTO): ResponseEntity<String> {
         )
         createValidResponse(anonymisation.applyAnonymistation())
     } catch (e: Exception) {
-        println(e.localizedMessage)
-        e.stackTrace.forEach { m -> println(m.toString())}
         createErrorResponse(e.localizedMessage)
     }
 }
