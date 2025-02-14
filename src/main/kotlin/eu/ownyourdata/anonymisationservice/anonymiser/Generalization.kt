@@ -37,5 +37,5 @@ abstract class Generalization<T : Comparable<T>>: Anonymiser {
 
     abstract fun convertValues(index: Int, value: Any): Pair<Int, T>
 
-    abstract fun getQuantileValues(numericValues: SortedMap<Int, Pair<IntArray, List<T>>>): Map<String, IntArray>
+    abstract fun getQuantileValues(quantiles: SortedMap<Int, Pair<IntArray, List<T>>>): Map<String, IntArray>
 }
