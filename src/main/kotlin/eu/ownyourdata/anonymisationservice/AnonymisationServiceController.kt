@@ -5,7 +5,6 @@ import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
 import eu.ownyourdata.anonymisationservice.service.anonymise
 import eu.ownyourdata.anonymisationservice.service.createErrorResponse
-import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.http.converter.HttpMessageNotReadableException
 import org.springframework.web.bind.annotation.*

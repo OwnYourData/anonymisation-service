@@ -1,0 +1,19 @@
+--- Error Cases ---
+
+01: parameter is missing
+02: invalid ontology
+03: invalid configuration
+04: mismatch between requested anonymization and allowed
+05: invalid data
+06: no anonymizer implemented for attribute and data type
+
+
+--- happy cases ---
+
+07: masking
+08: generalization numeric
+09: generalization date
+10: generalization address1
+11: generalization address2
+12: missing attribute
+13: randomization (TODO figure out how to test this)

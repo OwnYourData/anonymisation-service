@@ -1,0 +1,41 @@
+{
+    "ontology": "Beispiele/anonymization_ontology.json",
+    "data":[
+        {
+            "Gehalt": 10000
+        },
+        {
+            "Gehalt": 100000
+        },
+        {
+            "Gehalt": 40000
+        },
+        {
+            "Gehalt": 70000
+        },
+        {
+            "Gehalt": 45000
+        },
+        {
+            "Gehalt": 12000
+        },
+        {
+            "Gehalt": 10000
+        },
+        {
+            "Gehalt": 30000
+        },
+        {
+            "Gehalt": 50000
+        },
+        {
+            "Gehalt": 20000
+        }
+    ],
+    "configuration":{
+        "Gehalt": {
+            "anonymisationType": "Generalization",
+            "dataType": "Numeric"
+        }
+    }
+}
