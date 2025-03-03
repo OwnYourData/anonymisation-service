@@ -28,4 +28,18 @@ interface Anonymiser {
      * The function has the input and return parameter any as the input validation takes place in the specific functions
      */
     fun anonymise(values: MutableList<Any>): List<Any>
+
+    fun anonymiseWithNulls(values: MutableList<Any?>): List<Any?> {
+        val nulls: List<Boolean> = values.stream().map { v -> v == null }.toList()
+        val noNullsValues: MutableList<Any> = values.filterNotNull().toMutableList()
+        val anonymizedValues = anonymise(noNullsValues)
+        var positionNextValue = 0
+        return nulls.stream().map { v ->
+            if (v) {
+                null
+            } else {
+                anonymizedValues[positionNextValue++]
+            }
+        }.toList()
+    }
 }

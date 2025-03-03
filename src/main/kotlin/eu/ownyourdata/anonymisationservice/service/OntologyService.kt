@@ -8,9 +8,13 @@ import org.apache.jena.riot.RDFDataMgr
 import java.io.File
 import java.io.InputStream
 import java.io.StringWriter
+import java.lang.IllegalArgumentException
 
 fun getOntology(url: String): OntModel {
     // TODO for now get content from file but change to request
+    if (url != "Beispiele/anonymization_ontology.json") {
+        throw IllegalArgumentException("Ontology not found")
+    }
     val fileContent: InputStream = File("Beispiele/anonymization_ontology.json").inputStream()
     val ontModel: OntModel = ModelFactory.createOntologyModel()
     RDFDataMgr.read(ontModel, fileContent, null, Lang.JSONLD)
