@@ -1,14 +1,13 @@
 package eu.ownyourdata.anonymisationservice
 
 import eu.ownyourdata.anonymisationservice.dto.RequestDTO
-import org.springframework.web.bind.annotation.GetMapping
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
-import org.springframework.web.bind.annotation.PutMapping
-import org.springframework.web.bind.annotation.RestController
 import eu.ownyourdata.anonymisationservice.service.anonymise
+import eu.ownyourdata.anonymisationservice.service.createErrorResponse
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.http.converter.HttpMessageNotReadableException
+import org.springframework.web.bind.annotation.*
 
 
 @RestController
@@ -16,6 +15,11 @@ class AnonymisationServiceController {
 
     companion object {
         const val VERSION = "1.0.0"
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException::class)
+    fun handleInvalidJson(exception: HttpMessageNotReadableException): ResponseEntity<String> {
+        return createErrorResponse(exception.localizedMessage)
     }
 
     @GetMapping("/")
