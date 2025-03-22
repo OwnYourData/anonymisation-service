@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: anonymizer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: anonymizer
+  template:
+    metadata:
+      name: anonymizer
+      labels:
+        app: anonymizer
+    spec:
+      containers:
+      - name: anonymizer
+        image: oydeu/anonymizer:250311c
+        ports:
+        - containerPort: 8080
+        env:
+          - name: LANG
+            value: C.UTF-8
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: anonymizer
+spec:
+  selector:
+    app: anonymizer
+  type: NodePort
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: anonymizer
+  annotations:
+    certmanager.io/issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: "nginx"
+  tls:
+  - hosts:
+    - anonymizer.go-data.at
+    secretName: anonymizer-tls
+  rules:
+  - host: anonymizer.go-data.at
+    http:
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: anonymizer
+            port:
+              number: 80
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: anonymizer-tls
+  annotations:
+    cert-manager.io/issuer: "letsencrypt-prod"
+spec:
+  secretName: anonymizer-tls
+  issuerRef:
+    group: cert-manager.io
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  dnsNames:
+  - 'anonymizer.go-data.at'

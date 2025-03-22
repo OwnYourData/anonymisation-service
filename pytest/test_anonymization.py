@@ -6,7 +6,7 @@ import json
 
 cwd = os.getcwd()
 
-URL = "http://localhost:8080/api/anonymise"
+URL = "http://localhost:8081/api/anonymise"
 
 # iterate over all testcases
 @pytest.mark.parametrize('input', glob.glob(cwd + '/01_input/*.json'))
