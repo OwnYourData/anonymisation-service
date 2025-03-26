@@ -2,30 +2,21 @@ package eu.ownyourdata.anonymisationservice.service
 
 import eu.ownyourdata.anonymisationservice.anonymiser.Anonymiser
 import eu.ownyourdata.anonymisationservice.anonymiser.anonymizerFactory
+import eu.ownyourdata.anonymisationservice.dto.Configuration
 import eu.ownyourdata.anonymisationservice.dto.DatatypeDTO
 import eu.ownyourdata.anonymisationservice.dto.RequestDTO
+import org.apache.jena.rdf.model.Model
 import org.springframework.http.ResponseEntity
 import java.lang.IllegalArgumentException
 import java.util.HashMap
 import java.util.stream.Collectors
 
-
-/** TODO: next steps
- * Bugfixes
- *  Ontology
- *
- * Documentation, focus on anonymization methods
- * Anonymization validation for GDPR
- *  k-Anonymity --> each individual different to k other individuals
- *  l-Diversity --> multiple values for sensitive attribute in each group
- * Tests (same Testing concept as for Reasoning Service)
- */
-
 fun anonymise(body: RequestDTO): ResponseEntity<String> {
+
     return try {
-        validateConfig(getOntology(body.ontology), body.configuration)
+        val configuration: List<Configuration> = fetchConfig(body.configurationURL)
         val anonymisation = Anonymisation(
-            body.configuration,
+            configuration,
             body.data
         )
         createValidResponse(anonymisation.applyAnonymistation())
@@ -34,9 +25,9 @@ fun anonymise(body: RequestDTO): ResponseEntity<String> {
     }
 }
 
-class Anonymisation(configuration: Map<String, DatatypeDTO>, val data: List<Map<String, Any>>) {
+class Anonymisation(val configuration: List<Configuration>, val data: List<Map<String, Any>>) {
 
-    var anonymizer: Map<String, Anonymiser>
+    private var anonymizer: Map<String, Anonymiser>
 
     companion object {
         const val SOYA_URL = "https://soya.ownyourdata.eu/OntologyEEG/soya"
@@ -45,19 +36,19 @@ class Anonymisation(configuration: Map<String, DatatypeDTO>, val data: List<Map<
     }
 
     init {
-        anonymizer = initAnonymizer(configuration)
+        anonymizer = initAnonymizer()
     }
 
     fun applyAnonymistation(): List<Map<String, Any>> {
-        val valuesPerAttribute = createValuesPerAttribute()
-        val anonymisedValues = applyAnonymizer(anonymizer, valuesPerAttribute)
+        val verticalSchema: Map<String, MutableList<Any?>> = createValuesPerAttribute()
+        val anonymisedValues = applyAnonymizer(verticalSchema)
         return createValuesPerInstance(anonymisedValues)
     }
 
-    private fun initAnonymizer(configuration: Map<String, DatatypeDTO>): Map<String, Anonymiser> {
+    private fun initAnonymizer(): Map<String, Anonymiser> {
         val anonymiser = HashMap<String, Anonymiser>()
-        configuration.entries.forEach { e ->
-            anonymiser[e.key] = anonymizerFactory(e.value.anonymisationType, e.value.dataType)
+        this.configuration.forEach { config ->
+            anonymiser[config.attribute] = anonymizerFactory(config.anonaymizationType, config.datatype)
         }
         return anonymiser
     }
@@ -87,11 +78,10 @@ class Anonymisation(configuration: Map<String, DatatypeDTO>, val data: List<Map<
         return instances
     }
 
-    private fun applyAnonymizer(anonymiser: Map<String, Anonymiser>,
-                                  valuesPerAttribute: Map<String, MutableList<Any?>>): Map<String, List<Any?>> {
+    private fun applyAnonymizer(verticalSchema: Map<String, MutableList<Any?>>): Map<String, List<Any?>> {
         val anonymisedValues = HashMap<String, List<Any?>>()
-        valuesPerAttribute.entries.forEach { e ->
-            val anonymiserInstance = anonymiser[e.key]
+        verticalSchema.entries.forEach { e ->
+            val anonymiserInstance = anonymizer[e.key.lowercase()]
             if (anonymiserInstance != null) {
                 anonymisedValues[e.key] = anonymiserInstance.anonymiseWithNulls(e.value)
             } else {
