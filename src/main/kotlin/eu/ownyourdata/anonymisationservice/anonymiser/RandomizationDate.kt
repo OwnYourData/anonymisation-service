@@ -12,10 +12,14 @@ class RandomizationDate: Randomization() {
     override fun anonymise(values: MutableList<Any>): List<Any> {
         val dateValues = values.stream().map { value ->
             when (value) {
-                is String -> LocalDate.parse(value)
+                is String -> runCatching {
+                    LocalDate.parse(value)
+                }.getOrElse {
+                    throw IllegalArgumentException("Invalid date format for value: '$value'. Expected format: yyyy-MM-dd")
+                }
                 is LocalDate -> value
                 else ->
-                    throw IllegalArgumentException("Date Generalization was requested but the input $value is not numeric")
+                    throw IllegalArgumentException("Invalid date format for value: '$value'. Expected format: yyyy-MM-dd")
             }
         }.toList()
         val sd = calculateSDOfDates(dateValues)

@@ -16,6 +16,11 @@ class RandomizationNumeric: Randomization() {
             when (value) {
                 is Double -> value
                 is Int -> value.toDouble()
+                is String -> runCatching {
+                    value.toDouble()
+                }.getOrElse {
+                    throw IllegalArgumentException("Numeric Generalization was requested but the input $value is not numeric")
+                }
                 else -> throw IllegalArgumentException("Numeric Generalization was requested but the input $value is not numeric")
             }
         }.toList().toDoubleArray()

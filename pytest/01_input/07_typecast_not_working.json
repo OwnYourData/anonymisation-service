@@ -3,10 +3,9 @@
     "data":[
         {
             "Name": "Name 1",
-            "Geburtsdatum": "1975-11-01",
+            "Geburtsdatum": "This is not a Date",
             "Adresse": "Musterstraße 1, 1010 St-Pölten, Niederösterreich, Österreich",
-            "Gehalt": 10000,
-            "Invalid Attribute": "some value"
+            "Gehalt": 10000
         },
         {
             "Name": "Name 2",

@@ -1,5 +1,5 @@
 {
-    "ontology": "Beispiele/anonymization_ontology.json",
+    "configurationURL": "This is not an URL",
     "data":[
         {
             "Name": "Name 1",
@@ -81,35 +81,5 @@
             "E-Mail": "mock.mock@example.com",
             "Gehalt": 20000
         }
-    ],
-    "configuration":{
-        "Name": {
-            "anonymisationType": "Generalization",
-            "dataType": "Numeric"
-        },
-        "Geburtsdatum": {
-            "anonymisationType": "Masking",
-            "dataType": "Date"
-        },
-        "Adresse": {
-            "anonymisationType": "Masking",
-            "dataType": "Address"
-        },
-        "SV-Nr.": {
-            "anonymisationType": "Masking",
-            "dataType": "String"
-        },
-        "Telefon": {
-            "anonymisationType": "Masking",
-            "dataType": "String"
-        },
-        "E-Mail": {
-            "anonymisationType": "Masking",
-            "dataType": "String"
-        },
-        "Gehalt": {
-            "anonymisationType": "Masking",
-            "dataType": "Numeric"
-        }
-    }
+    ]
 }

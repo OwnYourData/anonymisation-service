@@ -9,9 +9,12 @@ import java.util.*
 class GeneralizationDate: Generalization<LocalDate>() {
 
     override fun convertValues(index: Int, value: Any): Pair<Int, LocalDate> {
-        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
         return when (value) {
-            is String -> Pair(index, LocalDate.parse(value, formatter))
+            is String -> runCatching {
+                Pair(index, LocalDate.parse(value))
+            }.getOrElse {
+                throw IllegalArgumentException("Invalid date format for value: '$value'. Expected format: yyyy-MM-dd")
+            }
             is LocalDate -> Pair(index, value)
             else ->
                 throw IllegalArgumentException("Date Generalization was requested but the input $value is not numeric")

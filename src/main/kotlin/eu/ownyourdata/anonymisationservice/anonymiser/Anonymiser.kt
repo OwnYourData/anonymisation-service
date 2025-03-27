@@ -3,21 +3,20 @@ package eu.ownyourdata.anonymisationservice.anonymiser
 import java.lang.IllegalArgumentException
 
 fun anonymizerFactory(anonymisationType: String, dataType: String): Anonymiser {
-    if(anonymisationType.lowercase() == "masking") {
-        return Masking()
-    } else if(anonymisationType.lowercase() == "generalization") {
-        return when (dataType.lowercase()) {
+    return when(anonymisationType.lowercase()) {
+        "masking" -> Masking()
+        "generalization" -> when (dataType.lowercase()) {
             "date" -> GeneralizationDate()
             "integer" -> GeneralizationNumeric()
             "address" -> GeneralizationAddress()
             else -> throw IllegalArgumentException("The Datatype $dataType is not allowed for generalization")
         }
-    } else {
-        return when (dataType.lowercase()) {
+        "randomization" -> when (dataType.lowercase()) {
             "date" -> RandomizationDate()
             "integer" -> RandomizationNumeric()
             else -> throw IllegalArgumentException("The Datatype $dataType is not allowed for randomization")
         }
+        else -> throw IllegalArgumentException("The anonymization $anonymisationType is not defined")
     }
 }
 

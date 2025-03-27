@@ -1,26 +1,24 @@
 {
-    "ontology": "Beispiele/anonymization_ontology.json",
+    "configurationURL": "https://soya.ownyourdata.eu/AnonymisationDemo",
     "data":[
         {
-            "Adresse": "Musterstraße 1, 1010 Niederösterreich, Niederösterreich, Österreich"
+            "Adresse": "Musterstraße 1, 1010 St Pölten, Niederösterreich, Österreich"
         },
         {
-            "Adresse": "Musterstraße 1, 1010 Niederösterreich, Niederösterreich, Österreich"
+            "Adresse": "Musterstraße 1, 1010 St Pölten, Niederösterreich, Österreich"
             },
         {
-            "Adresse": "Musterstraße 1, 1010 Niederösterreich, Wien, Österreich"
+            "Adresse": "Musterstraße 1, 1010 Linz, Oberösterreich, Österreich"
         },
         {
             "Adresse": "Musterstraße 1, 1010 Wien, Wien, Österreich"
         },
         {
-            "Adresse": "Musterstraße 1, 1010 Wien, Wien, Österreich"
         },
         {
             "Adresse": "Musterstraße 1, 1010 Wien, Wien, Österreich"
         },
         {
-            "Adresse": "Musterstraße 1, 1010 Wien, Wien, Österreich"
         },
         {
             "Adresse": "Musterstraße 1, 1010 Wien, Wien, Österreich"
@@ -31,11 +29,5 @@
         {
             "Adresse": "Musterstraße 1, 1010 Wien, Wien, Österreich"
         }
-    ],
-    "configuration":{
-        "Adresse": {
-            "anonymisationType": "Generalization",
-            "dataType": "Address"
-        }
-    }
+    ]
 }

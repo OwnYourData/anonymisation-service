@@ -1,0 +1,5 @@
+{
+  "version": "1.0.0",
+  "valid": false,
+  "errorMessage": "no protocol: This is not an URL"
+}

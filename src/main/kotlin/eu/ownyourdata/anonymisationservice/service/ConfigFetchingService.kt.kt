@@ -9,6 +9,7 @@ import org.apache.jena.rdf.model.Model
 import org.apache.jena.rdf.model.ModelFactory
 import org.apache.jena.riot.Lang
 import org.apache.jena.riot.RDFDataMgr
+import org.apache.jena.riot.RiotException
 import java.io.InputStream
 import java.net.HttpURLConnection
 import java.net.URL
@@ -57,8 +58,9 @@ fun fetchConfig(url: String): List<Configuration> {
         val model: OntModel = ModelFactory.createOntologyModel()
         RDFDataMgr.read(model, modelStream, Lang.JSONLD)
         return extractConfig(model)
-    } catch(_: Exception) {
-        // TODO proper exception handling
-        throw IllegalArgument("No valid configuration was found under der provided URL")
+    } catch(e: RiotException) {
+        throw IllegalArgument("The configuration is not provided in a valid Json-LD format")
+    } catch(e: Exception) {
+        throw IllegalArgument(e.localizedMessage)
     }
 }

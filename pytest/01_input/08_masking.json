@@ -1,0 +1,33 @@
+{
+    "configurationURL": "https://soya.ownyourdata.eu/AnonymisationDemo",
+    "data":[
+        {
+            "Name": "Name 1"
+        },
+        {
+            "Name": "Name 2"
+        },
+        {
+            "Name": "Name 3"
+        },
+        {
+            "Name": "Name 4"
+        },
+        {
+        },
+        {
+            "Name": "Name 6"
+        },
+        {
+            "Name": "Name 7"
+        },
+        {
+        },
+        {
+            "Name": "Name 9"
+        },
+        {
+            "Name": "Name 10"
+        }
+    ]
+}

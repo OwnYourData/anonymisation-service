@@ -30,8 +30,6 @@ class Anonymisation(val configuration: List<Configuration>, val data: List<Map<S
     private var anonymizer: Map<String, Anonymiser>
 
     companion object {
-        const val SOYA_URL = "https://soya.ownyourdata.eu/OntologyEEG/soya"
-        const val ONTOLOGY_URL = "https://soya.ownyourdata.eu/OntologyEEG"
         const val VERSION = "1.0.0"
     }
 
@@ -85,7 +83,7 @@ class Anonymisation(val configuration: List<Configuration>, val data: List<Map<S
             if (anonymiserInstance != null) {
                 anonymisedValues[e.key] = anonymiserInstance.anonymiseWithNulls(e.value)
             } else {
-                throw IllegalArgumentException("For the attribute ${e.key} no anonymiser is defined.")
+                throw IllegalArgumentException("For the attribute \'${e.key}\' no anonymiser is defined.")
             }
         }
         return anonymisedValues
