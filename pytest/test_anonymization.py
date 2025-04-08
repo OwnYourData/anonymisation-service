@@ -1,4 +1,6 @@
 import glob
+from http.client import responses
+
 import pytest
 import os
 import requests
@@ -7,10 +9,18 @@ import json
 cwd = os.getcwd()
 
 URL = "http://localhost:8081/api/anonymise"
+CONFIG_URL = "https://soya.ownyourdata.eu/AnonymisationDemo"
 
 # iterate over all testcases
 @pytest.mark.parametrize('input', glob.glob(cwd + '/01_input/*.json'))
 def test(input):
+
+    # Add mocking for the config request
+    responses.add(
+        responses.GET, CONFIG_URL,
+        json={"mocked": "response"},
+        status=200
+    )
 
     # Read the json body
     with open(input) as f:

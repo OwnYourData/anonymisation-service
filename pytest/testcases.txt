@@ -15,6 +15,5 @@
 09: generalization numeric
 10:  generalization address1
 11: generalization address2
-12: missing attribute
-13: randomization (TODO figure out how to test this) --> Idea: using always the same seed
-14: multiple
+12: randomization (TODO figure out how to test this) --> Idea: using always the same seed
+13: multiple inputs
