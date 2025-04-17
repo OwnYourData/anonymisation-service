@@ -2,10 +2,7 @@ package eu.ownyourdata.anonymisationservice.service
 
 import eu.ownyourdata.anonymisationservice.anonymiser.Anonymiser
 import eu.ownyourdata.anonymisationservice.anonymiser.anonymizerFactory
-import eu.ownyourdata.anonymisationservice.dto.Configuration
-import eu.ownyourdata.anonymisationservice.dto.DatatypeDTO
 import eu.ownyourdata.anonymisationservice.dto.RequestDTO
-import org.apache.jena.rdf.model.Model
 import org.springframework.http.ResponseEntity
 import java.lang.IllegalArgumentException
 import java.util.HashMap
@@ -14,9 +11,9 @@ import java.util.stream.Collectors
 fun anonymise(body: RequestDTO): ResponseEntity<String> {
 
     return try {
-        val configuration: List<Configuration> = fetchConfig(body.configurationURL)
+        val configObject = ConfigObject(body.configurationURL)
         val anonymisation = Anonymisation(
-            configuration,
+            configObject,
             body.data
         )
         createValidResponse(anonymisation.applyAnonymistation())
@@ -25,7 +22,7 @@ fun anonymise(body: RequestDTO): ResponseEntity<String> {
     }
 }
 
-class Anonymisation(val configuration: List<Configuration>, val data: List<Map<String, Any>>) {
+class Anonymisation(private val configObject: ConfigObject, val data: List<Map<String, Any>>) {
 
     private var anonymizer: Map<String, Anonymiser>
 
@@ -45,8 +42,8 @@ class Anonymisation(val configuration: List<Configuration>, val data: List<Map<S
 
     private fun initAnonymizer(): Map<String, Anonymiser> {
         val anonymiser = HashMap<String, Anonymiser>()
-        this.configuration.forEach { config ->
-            anonymiser[config.attribute] = anonymizerFactory(config.anonaymizationType, config.datatype)
+        this.configObject.configuration.forEach { config ->
+            anonymiser[config.attribute] = anonymizerFactory(config, configObject)
         }
         return anonymiser
     }
@@ -81,7 +78,11 @@ class Anonymisation(val configuration: List<Configuration>, val data: List<Map<S
         verticalSchema.entries.forEach { e ->
             val anonymiserInstance = anonymizer[e.key.lowercase()]
             if (anonymiserInstance != null) {
-                anonymisedValues[e.key] = anonymiserInstance.anonymiseWithNulls(e.value)
+                try {
+                    anonymisedValues[e.key] = anonymiserInstance.anonymiseWithNulls(e.value)
+                } catch (error: Exception) {
+                    throw IllegalArgumentException("Error when applying anonymization to attribute ${e.key}: ${error.message}")
+                }
             } else {
                 throw IllegalArgumentException("For the attribute \'${e.key}\' no anonymiser is defined.")
             }

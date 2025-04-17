@@ -1,22 +1,24 @@
 package eu.ownyourdata.anonymisationservice.anonymiser
 
+import eu.ownyourdata.anonymisationservice.dto.AnonymizationType
+import eu.ownyourdata.anonymisationservice.dto.Configuration
+import eu.ownyourdata.anonymisationservice.service.ConfigObject
 import java.lang.IllegalArgumentException
 
-fun anonymizerFactory(anonymisationType: String, dataType: String): Anonymiser {
-    return when(anonymisationType.lowercase()) {
-        "masking" -> Masking()
-        "generalization" -> when (dataType.lowercase()) {
+fun anonymizerFactory(config: Configuration, configObject: ConfigObject): Anonymiser {
+    return when(config.anonaymizationType) {
+        AnonymizationType.MASKING -> Masking()
+        AnonymizationType.GENERALIZATION -> when (config.datatype.lowercase()) {
             "date" -> GeneralizationDate()
             "integer" -> GeneralizationNumeric()
-            "address" -> GeneralizationAddress()
-            else -> throw IllegalArgumentException("The Datatype $dataType is not allowed for generalization")
+            "string" -> throw IllegalArgumentException("The Datatype String is not allowed for generalization")
+            else -> GeneralizationObject(configObject.getAttributeObject(config.datatype.lowercase()))
         }
-        "randomization" -> when (dataType.lowercase()) {
+        AnonymizationType.RANDOMIZATION -> when (config.datatype) {
             "date" -> RandomizationDate()
             "integer" -> RandomizationNumeric()
-            else -> throw IllegalArgumentException("The Datatype $dataType is not allowed for randomization")
+            else -> throw IllegalArgumentException("The Datatype ${config.datatype} is not allowed for randomization")
         }
-        else -> throw IllegalArgumentException("The anonymization $anonymisationType is not defined")
     }
 }
 
