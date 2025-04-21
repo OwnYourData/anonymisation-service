@@ -2,30 +2,18 @@ package eu.ownyourdata.anonymisationservice.service
 
 import eu.ownyourdata.anonymisationservice.anonymiser.Anonymiser
 import eu.ownyourdata.anonymisationservice.anonymiser.anonymizerFactory
-import eu.ownyourdata.anonymisationservice.dto.DatatypeDTO
 import eu.ownyourdata.anonymisationservice.dto.RequestDTO
 import org.springframework.http.ResponseEntity
 import java.lang.IllegalArgumentException
 import java.util.HashMap
 import java.util.stream.Collectors
 
-
-/** TODO: next steps
- * Bugfixes
- *  Ontology
- *
- * Documentation, focus on anonymization methods
- * Anonymization validation for GDPR
- *  k-Anonymity --> each individual different to k other individuals
- *  l-Diversity --> multiple values for sensitive attribute in each group
- * Tests (same Testing concept as for Reasoning Service)
- */
-
 fun anonymise(body: RequestDTO): ResponseEntity<String> {
+
     return try {
-        validateConfig(getOntology(body.ontology), body.configuration)
+        val configObject = ConfigObject(body.configurationURL)
         val anonymisation = Anonymisation(
-            body.configuration,
+            configObject,
             body.data
         )
         createValidResponse(anonymisation.applyAnonymistation())
@@ -34,30 +22,28 @@ fun anonymise(body: RequestDTO): ResponseEntity<String> {
     }
 }
 
-class Anonymisation(configuration: Map<String, DatatypeDTO>, val data: List<Map<String, Any>>) {
+class Anonymisation(private val configObject: ConfigObject, val data: List<Map<String, Any>>) {
 
-    var anonymizer: Map<String, Anonymiser>
+    private var anonymizer: Map<String, Anonymiser>
 
     companion object {
-        const val SOYA_URL = "https://soya.ownyourdata.eu/OntologyEEG/soya"
-        const val ONTOLOGY_URL = "https://soya.ownyourdata.eu/OntologyEEG"
         const val VERSION = "1.0.0"
     }
 
     init {
-        anonymizer = initAnonymizer(configuration)
+        anonymizer = initAnonymizer()
     }
 
     fun applyAnonymistation(): List<Map<String, Any>> {
-        val valuesPerAttribute = createValuesPerAttribute()
-        val anonymisedValues = applyAnonymizer(anonymizer, valuesPerAttribute)
+        val verticalSchema: Map<String, MutableList<Any?>> = createValuesPerAttribute()
+        val anonymisedValues = applyAnonymizer(verticalSchema)
         return createValuesPerInstance(anonymisedValues)
     }
 
-    private fun initAnonymizer(configuration: Map<String, DatatypeDTO>): Map<String, Anonymiser> {
+    private fun initAnonymizer(): Map<String, Anonymiser> {
         val anonymiser = HashMap<String, Anonymiser>()
-        configuration.entries.forEach { e ->
-            anonymiser[e.key] = anonymizerFactory(e.value.anonymisationType, e.value.dataType)
+        this.configObject.configuration.forEach { config ->
+            anonymiser[config.attribute] = anonymizerFactory(config, configObject)
         }
         return anonymiser
     }
@@ -87,15 +73,18 @@ class Anonymisation(configuration: Map<String, DatatypeDTO>, val data: List<Map<
         return instances
     }
 
-    private fun applyAnonymizer(anonymiser: Map<String, Anonymiser>,
-                                  valuesPerAttribute: Map<String, MutableList<Any?>>): Map<String, List<Any?>> {
+    private fun applyAnonymizer(verticalSchema: Map<String, MutableList<Any?>>): Map<String, List<Any?>> {
         val anonymisedValues = HashMap<String, List<Any?>>()
-        valuesPerAttribute.entries.forEach { e ->
-            val anonymiserInstance = anonymiser[e.key]
+        verticalSchema.entries.forEach { e ->
+            val anonymiserInstance = anonymizer[e.key.lowercase()]
             if (anonymiserInstance != null) {
-                anonymisedValues[e.key] = anonymiserInstance.anonymiseWithNulls(e.value)
+                try {
+                    anonymisedValues[e.key] = anonymiserInstance.anonymiseWithNulls(e.value)
+                } catch (error: Exception) {
+                    throw IllegalArgumentException("Error when applying anonymization to attribute ${e.key}: ${error.message}")
+                }
             } else {
-                throw IllegalArgumentException("For the attribute ${e.key} no anonymiser is defined.")
+                throw IllegalArgumentException("For the attribute \'${e.key}\' no anonymiser is defined.")
             }
         }
         return anonymisedValues

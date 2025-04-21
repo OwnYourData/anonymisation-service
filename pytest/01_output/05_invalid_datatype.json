@@ -1,0 +1,5 @@
+{
+  "version": "1.0.0",
+  "valid": false,
+  "errorMessage": "Error when applying anonymization to attribute Adresse: Values could not be extracted from attribute."
+}

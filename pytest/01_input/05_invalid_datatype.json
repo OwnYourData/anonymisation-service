@@ -2,13 +2,7 @@
     "configurationURL": "https://soya.ownyourdata.eu/AnonymisationDemo",
     "data":[
         {
-            "Adresse": {
-                "Detail": "Musterstraße 1",
-                "City": "St-Pölten",
-                "Zip": 2020,
-                "State": "Niederösterreich",
-                "Country": "Österreich"
-            }
+            "Adresse": "Musterstraße 4, 2040 Melk, Österreich"
         },
         {
             "Adresse": {

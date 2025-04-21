@@ -1,41 +1,95 @@
 {
-    "ontology": "Beispiele/anonymization_ontology.json",
+    "configurationURL": "https://soya.ownyourdata.eu/AnonymisationDemo",
     "data":[
         {
-            "Adresse": "Musterstraße 1, 1010 Niederösterreich, Niederösterreich, Österreich"
+            "Adresse": {
+                "Detail": "Musterstraße 1",
+                "City": "St-Pölten",
+                "Zip": 2020,
+                "State": "Niederösterreich",
+                "Country": "Österreich"
+            }
         },
         {
-            "Adresse": "Musterstraße 1, 1010 Niederösterreich, Niederösterreich, Österreich"
-            },
-        {
-            "Adresse": "Musterstraße 1, 1010 Niederösterreich, Wien, Österreich"
+            "Adresse": {
+                "Detail": "Musterstraße 1",
+                "City": "Melk",
+                "Zip": 2040,
+                "State": "Niederösterreich",
+                "Country": "Österreich"
+            }
         },
         {
-            "Adresse": "Musterstraße 1, 1010 Wien, Wien, Österreich"
+            "Adresse": {
+                "Detail": "Musterstraße 2",
+                "City": "St-Pölten",
+                "Zip": 2020,
+                "State": "Niederösterreich",
+                "Country": "Österreich"
+            }
         },
         {
-            "Adresse": "Musterstraße 1, 1010 Wien, Wien, Österreich"
+            "Adresse": {
+                "Detail": "Musterstraße 2",
+                "City": "Linz",
+                "Zip": 4020,
+                "State": "Oberösterreich",
+                "Country": "Österreich"
+            }
         },
         {
-            "Adresse": "Musterstraße 1, 1010 Wien, Wien, Österreich"
+            "Adresse": {
+                "Detail": "Musterstraße 3",
+                "City": "Wien",
+                "Zip": 1010,
+                "State": "Wien",
+                "Country": "Österreich"
+            }
         },
         {
-            "Adresse": "Musterstraße 1, 1010 Wien, Wien, Österreich"
+            "Adresse": {
+                "Detail": "Musterstraße 3",
+                "City": "Wien",
+                "Zip": 1010,
+                "State": "Wien",
+                "Country": "Österreich"
+            }
         },
         {
-            "Adresse": "Musterstraße 1, 1010 Wien, Wien, Österreich"
+            "Adresse": {
+                "Detail": "Musterstraße 3",
+                "City": "Wien",
+                "Zip": 1010,
+                "State": "Wien",
+                "Country": "Österreich"
+            }
         },
         {
-            "Adresse": "Musterstraße 1, 1010 Wien, Wien, Österreich"
+            "Adresse": {
+                "Detail": "Musterstraße 4",
+                "City": "Wien",
+                "Zip": 1010,
+                "State": "Wien",
+                "Country": "Österreich"
+            }
         },
         {
-            "Adresse": "Musterstraße 1, 1010 Wien, Wien, Österreich"
+            "Adresse": {
+                "Detail": "Musterstraße 3",
+                "City": "Wien",
+                "Zip": 1010,
+                "State": "Wien",
+                "Country": "Österreich"
+            }
+        },
+        {
+            "Adresse": {
+                "Detail": "Musterstraße 3",
+                "City": "Wien",
+                "Zip": 1010,
+                "State": "Wien",
+                "Country": "Österreich"
+            }
         }
-    ],
-    "configuration":{
-        "Adresse": {
-            "anonymisationType": "Generalization",
-            "dataType": "Address"
-        }
-    }
+    ]
 }

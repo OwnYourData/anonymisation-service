@@ -1,20 +1,17 @@
 {
-    "ontology": "Beispiele/anonymization_ontology.json",
+    "configurationURL": "This is not an URL",
     "data":[
         {
             "Name": "Name 1",
             "Geburtsdatum": "1975-11-01",
             "Adresse": "Musterstraße 1, 1010 Niederösterreich, Niederösterreich, Österreich",
             "SV-Nr.": "1234 567 891",
-            "Telefon": "0664 1234567",
             "E-Mail": "mock.mock@example.com",
-            "Invalid": "some value",
             "Gehalt": 10000
         },
         {
             "Name": "Name 2",
             "Geburtsdatum": "1985-12-12",
-            "Adresse": "Musterstraße 1, 1010 Niederösterreich, Niederösterreich, Österreich",
             "SV-Nr.": "1234 567 891",
             "Telefon": "0664 1234567",
             "E-Mail": "mock.mock@example.com",
@@ -22,7 +19,6 @@
         },
         {
             "Name": "Name 3",
-            "Geburtsdatum": "2004-09-30",
             "Adresse": "Musterstraße 1, 1010 Niederösterreich, Niederösterreich, Österreich",
             "SV-Nr.": "1234 567 891",
             "Telefon": "0664 1234567",
@@ -35,11 +31,9 @@
             "Adresse": "Musterstraße 1, 1010 Wien, Wien, Österreich",
             "SV-Nr.": "1234 567 891",
             "Telefon": "0664 1234567",
-            "E-Mail": "mock.mock@example.com",
-            "Gehalt": 70000
+            "E-Mail": "mock.mock@example.com"
         },
         {
-            "Name": "Name 5",
             "Geburtsdatum": "1990-01-01",
             "Adresse": "Musterstraße 1, 1010 Wien, Wien, Österreich",
             "SV-Nr.": "1234 567 891",
@@ -50,7 +44,6 @@
         {
             "Name": "Name 6",
             "Geburtsdatum": "2019-05-14",
-            "Adresse": "Musterstraße 1, 1010 Wien, Wien, Österreich",
             "SV-Nr.": "1234 567 891",
             "Telefon": "0664 1234567",
             "E-Mail": "mock.mock@example.com",
@@ -62,14 +55,12 @@
             "Adresse": "Musterstraße 1, 1010 Wien, Wien, Österreich",
             "SV-Nr.": "1234 567 891",
             "Telefon": "0664 1234567",
-            "E-Mail": "mock.mock@example.com",
             "Gehalt": 10000
         },
         {
             "Name": "Name 8",
             "Geburtsdatum": "1966-06-06",
             "Adresse": "Musterstraße 1, 1010 Wien, Wien, Österreich",
-            "SV-Nr.": "1234 567 891",
             "Telefon": "0664 1234567",
             "E-Mail": "mock.mock@example.com",
             "Gehalt": 30000
@@ -80,47 +71,15 @@
             "Adresse": "Musterstraße 1, 1010 Wien, Wien, Österreich",
             "SV-Nr.": "1234 567 891",
             "Telefon": "0664 1234567",
-            "E-Mail": "mock.mock@example.com",
-            "Gehalt": 50000
+            "E-Mail": "mock.mock@example.com"
         },
         {
             "Name": "Name 10",
             "Geburtsdatum": "1949-11-01",
-            "Adresse": "Musterstraße 1, 1010 Wien, Wien, Österreich",
             "SV-Nr.": "1234 567 891",
             "Telefon": "0664 1234567",
             "E-Mail": "mock.mock@example.com",
             "Gehalt": 20000
         }
-    ],
-    "configuration":{
-        "Name": {
-            "anonymisationType": "Masking",
-            "dataType": "Numeric"
-        },
-        "Geburtsdatum": {
-            "anonymisationType": "Masking",
-            "dataType": "Date"
-        },
-        "Adresse": {
-            "anonymisationType": "Masking",
-            "dataType": "Address"
-        },
-        "SV-Nr.": {
-            "anonymisationType": "Masking",
-            "dataType": "String"
-        },
-        "Telefon": {
-            "anonymisationType": "Masking",
-            "dataType": "String"
-        },
-        "E-Mail": {
-            "anonymisationType": "Masking",
-            "dataType": "String"
-        },
-        "Gehalt": {
-            "anonymisationType": "Masking",
-            "dataType": "Numeric"
-        }
-    }
+    ]
 }

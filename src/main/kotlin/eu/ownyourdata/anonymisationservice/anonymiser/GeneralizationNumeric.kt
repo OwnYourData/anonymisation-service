@@ -8,6 +8,11 @@ class GeneralizationNumeric: Generalization<Double>() {
         return when (value) {
             is Double -> Pair(index, value)
             is Int -> Pair(index, value.toDouble())
+            is String -> runCatching {
+                Pair(index, value.toDouble())
+            }.getOrElse {
+                throw IllegalArgumentException("Numeric Generalization was requested but the input $value is not numeric")
+            }
             else -> throw IllegalArgumentException("Numeric Generalization was requested but the input $value is not numeric")
         }
     }

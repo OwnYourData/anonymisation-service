@@ -1,19 +1,19 @@
 --- Error Cases ---
 
 01: parameter is missing
-02: invalid ontology
-03: invalid configuration
-04: mismatch between requested anonymization and allowed
-05: invalid data
-06: no anonymizer implemented for attribute and data type
+02: invalid url
+03: invalid configuration (content of URL no valid rdf)
+04: requested anonymization (not in Masking, Generalization or Randomization) does not exits --> not implemented yet
+05: object data type not matching
+06: no config for attribute
+07: typecast not working
 
 
 --- happy cases ---
 
-07: masking
-08: generalization numeric
-09: generalization date
+08: masking
+09: generalization numeric
 10: generalization address1
 11: generalization address2
-12: missing attribute
-13: randomization (TODO figure out how to test this)
+12: multiple attributes & missing values
+13: randomization --> not implemented yet

@@ -1,5 +1,5 @@
 {
   "version": "1.0.0",
   "valid": false,
-  "errorMessage": "JSON parse error: Cannot construct instance of `eu.ownyourdata.anonymisationservice.dto.RequestDTO`, problem: Parameter specified as non-null is null: method eu.ownyourdata.anonymisationservice.dto.RequestDTO.<init>, parameter ontology"
+  "errorMessage": "JSON parse error: Cannot construct instance of `eu.ownyourdata.anonymisationservice.dto.RequestDTO`, problem: Parameter specified as non-null is null: method eu.ownyourdata.anonymisationservice.dto.RequestDTO.<init>, parameter configurationURL"
 }

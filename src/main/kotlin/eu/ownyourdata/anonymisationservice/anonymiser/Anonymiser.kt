@@ -1,28 +1,28 @@
 package eu.ownyourdata.anonymisationservice.anonymiser
 
+import eu.ownyourdata.anonymisationservice.dto.AnonymizationType
+import eu.ownyourdata.anonymisationservice.dto.Configuration
+import eu.ownyourdata.anonymisationservice.service.ConfigObject
 import java.lang.IllegalArgumentException
 
-fun anonymizerFactory(anonymisationType: String, dataType: String): Anonymiser {
-    if(anonymisationType == "Masking") {
-        return Masking()
-    } else if(anonymisationType == "Generalization") {
-        return when (dataType) {
-            "Date" -> GeneralizationDate()
-            "Numeric" -> GeneralizationNumeric()
-            "Address" -> GeneralizationAddress()
-            else -> throw IllegalArgumentException("The Datatype $dataType is not allowed for generalization")
+fun anonymizerFactory(config: Configuration, configObject: ConfigObject): Anonymiser {
+    return when(config.anonaymizationType) {
+        AnonymizationType.MASKING -> Masking()
+        AnonymizationType.GENERALIZATION -> when (config.datatype.lowercase()) {
+            "date" -> GeneralizationDate()
+            "integer" -> GeneralizationNumeric()
+            "string" -> throw IllegalArgumentException("The Datatype String is not allowed for generalization")
+            else -> GeneralizationObject(configObject.getAttributeObject(config.datatype.lowercase()))
         }
-    } else {
-        return when (dataType) {
-            "Date" -> RandomizationDate()
-            "Numeric" -> RandomizationNumeric()
-            else -> throw IllegalArgumentException("The Datatype $dataType is not allowed for randomization")
+        AnonymizationType.RANDOMIZATION -> when (config.datatype) {
+            "date" -> RandomizationDate()
+            "integer" -> RandomizationNumeric()
+            else -> throw IllegalArgumentException("The Datatype ${config.datatype} is not allowed for randomization")
         }
     }
 }
 
 interface Anonymiser {
-
 
     /**
      * The function has the input and return parameter any as the input validation takes place in the specific functions
