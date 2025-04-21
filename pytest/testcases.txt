@@ -3,8 +3,8 @@
 01: parameter is missing
 02: invalid url
 03: invalid configuration (content of URL no valid rdf)
-04: requested anonymization is does not exits --> Check with Christoph to create new config
-05: requested datatype for anonymization does not exist --> Check with Christoph to create new config
+04: requested anonymization (not in Masking, Generalization or Randomization) does not exits --> not implemented yet
+05: object data type not matching
 06: no config for attribute
 07: typecast not working
 
@@ -13,7 +13,7 @@
 
 08: masking
 09: generalization numeric
-10:  generalization address1
+10: generalization address1
 11: generalization address2
-12: randomization (TODO figure out how to test this) --> Idea: using always the same seed
-13: multiple inputs
+12: multiple attributes & missing values
+13: randomization --> not implemented yet

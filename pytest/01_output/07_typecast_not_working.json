@@ -1,5 +1,5 @@
 {
   "version": "1.0.0",
   "valid": false,
-  "errorMessage": "Invalid date format for value: 'This is not a Date'. Expected format: yyyy-MM-dd"
+  "errorMessage": "Error when applying anonymization to attribute Geburtsdatum: Invalid date format for value: 'This is not a Date'. Expected format: yyyy-MM-dd"
 }

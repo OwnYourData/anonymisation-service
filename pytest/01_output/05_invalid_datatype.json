@@ -1,5 +1,5 @@
 {
   "version": "1.0.0",
   "valid": false,
-  "errorMessage": "For the attribute Invalid no anonymiser is defined."
+  "errorMessage": "Error when applying anonymization to attribute Adresse: Values could not be extracted from attribute."
 }

@@ -3,83 +3,47 @@
   "valid": true,
   "anonymisedData": [
     {
-      "Adresse": "*****",
-      "SV-Nr.": "*****",
-      "E-Mail": "*****",
-      "Geburtsdatum": "*****",
-      "Gehalt": "*****",
+      "Adresse": "Niederösterreich",
+      "Gehalt": "<= 25000.0",
       "Name": "*****"
     },
     {
-      "SV-Nr.": "*****",
-      "E-Mail": "*****",
-      "Geburtsdatum": "*****",
-      "Gehalt": "*****",
-      "Telefon": "*****",
+      "Adresse": "Niederösterreich",
+      "Gehalt": ">= 25000.0",
       "Name": "*****"
     },
     {
-      "Adresse": "*****",
-      "SV-Nr.": "*****",
-      "E-Mail": "*****",
-      "Gehalt": "*****",
-      "Telefon": "*****",
+      "Adresse": "Niederösterreich",
+      "Gehalt": ">= 25000.0",
       "Name": "*****"
     },
     {
-      "Adresse": "*****",
-      "SV-Nr.": "*****",
-      "E-Mail": "*****",
-      "Geburtsdatum": "*****",
-      "Telefon": "*****",
+      "Adresse": "Niederösterreich",
       "Name": "*****"
     },
     {
-      "Adresse": "*****",
-      "SV-Nr.": "*****",
-      "E-Mail": "*****",
-      "Geburtsdatum": "*****",
-      "Gehalt": "*****",
-      "Telefon": "*****"
+      "Adresse": "Wien",
+      "Gehalt": ">= 25000.0"
     },
     {
-      "SV-Nr.": "*****",
-      "E-Mail": "*****",
-      "Geburtsdatum": "*****",
-      "Gehalt": "*****",
-      "Telefon": "*****",
+      "Gehalt": "<= 25000.0",
       "Name": "*****"
     },
     {
-      "Adresse": "*****",
-      "SV-Nr.": "*****",
-      "Geburtsdatum": "*****",
-      "Gehalt": "*****",
-      "Telefon": "*****",
+      "Adresse": "Wien",
+      "Gehalt": "<= 25000.0",
       "Name": "*****"
     },
     {
-      "Adresse": "*****",
-      "E-Mail": "*****",
-      "Geburtsdatum": "*****",
-      "Gehalt": "*****",
-      "Telefon": "*****",
+      "Adresse": "Wien",
+      "Gehalt": ">= 25000.0",
       "Name": "*****"
     },
     {
-      "Adresse": "*****",
-      "SV-Nr.": "*****",
-      "E-Mail": "*****",
-      "Geburtsdatum": "*****",
-      "Telefon": "*****",
       "Name": "*****"
     },
     {
-      "SV-Nr.": "*****",
-      "E-Mail": "*****",
-      "Geburtsdatum": "*****",
-      "Gehalt": "*****",
-      "Telefon": "*****",
+      "Gehalt": "<= 25000.0",
       "Name": "*****"
     }
   ]
