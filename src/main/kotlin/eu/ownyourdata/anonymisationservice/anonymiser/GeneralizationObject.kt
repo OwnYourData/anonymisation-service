@@ -18,7 +18,7 @@ open class GeneralizationObject(objectAttributes: List<String>) : Anonymiser {
                 map!!.mapKeys { (key, _) -> key.toString().lowercase() }
                 Pair(index, map.mapKeys { (key, _) -> key.toString().lowercase() })
             } catch (e: Exception) {
-                throw IllegalArgumentException("Values could not be extracted form attribute.")
+                throw IllegalArgumentException("Values could not be extracted from attribute.")
             }
         }
 
