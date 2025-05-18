@@ -2,11 +2,14 @@ package eu.ownyourdata.anonymisationservice.service
 
 import eu.ownyourdata.anonymisationservice.anonymiser.Anonymiser
 import eu.ownyourdata.anonymisationservice.anonymiser.anonymizerFactory
+import eu.ownyourdata.anonymisationservice.dto.AnonymizationType
+import eu.ownyourdata.anonymisationservice.dto.Configuration
 import eu.ownyourdata.anonymisationservice.dto.RequestDTO
 import org.springframework.http.ResponseEntity
 import java.lang.IllegalArgumentException
-import java.util.HashMap
+import java.util.*
 import java.util.stream.Collectors
+import kotlin.collections.ArrayList
 
 fun anonymise(body: RequestDTO): ResponseEntity<String> {
 
@@ -75,16 +78,24 @@ class Anonymisation(private val configObject: ConfigObject, val data: List<Map<S
 
     private fun applyAnonymizer(verticalSchema: Map<String, MutableList<Any?>>): Map<String, List<Any?>> {
         val anonymisedValues = HashMap<String, List<Any?>>()
+        val attributeCount = verticalSchema.keys.filter { attribute ->
+            val config: Optional<Configuration> = this.configObject.configuration.stream()
+                .filter { c -> c.attribute == attribute.lowercase() }
+                .findFirst()
+            config.isPresent && (
+                    config.get().anonaymizationType == AnonymizationType.RANDOMIZATION ||
+                    config.get().anonaymizationType == AnonymizationType.GENERALIZATION)
+        }.size
         verticalSchema.entries.forEach { e ->
             val anonymiserInstance = anonymizer[e.key.lowercase()]
             if (anonymiserInstance != null) {
                 try {
-                    anonymisedValues[e.key] = anonymiserInstance.anonymiseWithNulls(e.value)
+                    anonymisedValues[e.key] = anonymiserInstance.anonymiseWithNulls(e.value, attributeCount)
                 } catch (error: Exception) {
                     throw IllegalArgumentException("Error when applying anonymization to attribute ${e.key}: ${error.message}")
                 }
             } else {
-                throw IllegalArgumentException("For the attribute \'${e.key}\' no anonymiser is defined.")
+                anonymisedValues[e.key] = e.value
             }
         }
         return anonymisedValues

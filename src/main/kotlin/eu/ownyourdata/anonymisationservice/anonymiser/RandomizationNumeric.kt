@@ -11,7 +11,7 @@ class RandomizationNumeric: Randomization() {
      * Eventuell noch eine unterschiedliche Implementierung für ratio und intervalue skaliert
      */
 
-    override fun anonymise(values: MutableList<Any>): List<Any> {
+    override fun anonymise(values: MutableList<Any>, anonymisationCount: Int): List<Any> {
         val numericValues = values.stream().map { value ->
             when (value) {
                 is Double -> value

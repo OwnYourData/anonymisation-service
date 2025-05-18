@@ -11,7 +11,7 @@ open class GeneralizationObject(objectAttributes: List<String>) : Anonymiser {
         this.objectAttributes = objectAttributes
     }
 
-    override fun anonymise(values: MutableList<Any>): List<Any> {
+    override fun anonymise(values: MutableList<Any>, anonymisationCount: Int): List<Any> {
         val objectValues = values.mapIndexed { index, value ->
             try {
                 val map = value as? Map<*, *>
@@ -24,7 +24,7 @@ open class GeneralizationObject(objectAttributes: List<String>) : Anonymiser {
 
         for (attribute in objectAttributes) {
             val groups = objectValues.groupBy(
-                keySelector = { it.second?.get(attribute).toString() },
+                keySelector = { it.second[attribute].toString() },
                 valueTransform = { it.first }
             )
             val vals = checkGeneralizationLevel(groups)

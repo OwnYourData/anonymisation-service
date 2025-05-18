@@ -1,10 +1,17 @@
 package eu.ownyourdata.anonymisationservice.anonymiser
 import java.util.*
+import kotlin.math.floor
+import kotlin.math.pow
 
 abstract class Generalization<T : Comparable<T>>: Anonymiser {
 
-    override fun anonymise(values: MutableList<Any>): List<Any> {
-        val bucketNumber = calculateNumberOfBuckets(values.size)
+    override fun anonymise(values: MutableList<Any>, anonymisationCount: Int): List<Any> {
+        val bucketNumber = calculateNumberOfBuckets(values.size, anonymisationCount)
+        println("Another test instance")
+        println("k: ${values.size}")
+        println("n: $anonymisationCount")
+        println("x: $bucketNumber")
+
         val quantiles: SortedMap<Int, Pair<IntArray, List<T>>> =  values.mapIndexed {
                 index, it -> convertValues(index, it)
         }.sortedBy { v -> v.second }
@@ -27,8 +34,10 @@ abstract class Generalization<T : Comparable<T>>: Anonymiser {
     /**
      * For now the square root of the input sequence is taken. Evaluate if this leads to good results in the future
      */
-    private fun calculateNumberOfBuckets(dataSize: Int): Int {
-        return kotlin.math.sqrt(dataSize.toDouble()).toInt()
+    private fun calculateNumberOfBuckets(dataSize: Int, numberAttributes: Int): Int {
+        return floor(1.0 /
+                (1.0 - (1.0 - 0.95.pow(1.0 / dataSize)).pow(1.0 / dataSize)).pow(1.0 / numberAttributes)
+        ).toInt()
     }
 
     private fun calculateQuantile(dataSize: Int, nrQuantile: Int, index: Int): Int {

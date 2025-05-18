@@ -9,7 +9,7 @@ import kotlin.math.sqrt
 
 class RandomizationDate: Randomization() {
 
-    override fun anonymise(values: MutableList<Any>): List<Any> {
+    override fun anonymise(values: MutableList<Any>, anonymisationCount: Int): List<Any> {
         val dateValues = values.stream().map { value ->
             when (value) {
                 is String -> runCatching {
