@@ -2,15 +2,8 @@ package eu.ownyourdata.anonymisationservice.anonymiser
 
 import java.lang.IllegalArgumentException
 import java.util.Random
-import kotlin.math.pow
-import kotlin.math.sqrt
 
-class RandomizationNumeric: Randomization() {
-
-    /**
-     * Eventuell noch eine unterschiedliche Implementierung für ratio und intervalue skaliert
-     */
-
+class RandomizationNumeric: Randomization<Double>() {
     override fun anonymise(values: MutableList<Any>, anonymisationCount: Int): List<Any> {
         val numericValues = values.stream().map { value ->
             when (value) {
@@ -23,13 +16,12 @@ class RandomizationNumeric: Randomization() {
                 }
                 else -> throw IllegalArgumentException("Numeric Generalization was requested but the input $value is not numeric")
             }
-        }.toList().toDoubleArray()
-        val mean = numericValues.average()
-        val sd = sqrt(numericValues.map { (it - mean).pow(2) }.average())
-        return numericValues.map { v -> addRandomNoise(sd, values.size, v) }
+        }.toList()
+        val distances = createDistancePerInstance(numericValues, values.size/anonymisationCount)
+        return distances.map { v -> v.first + Random().nextGaussian() * v.second }
     }
 
-    private fun addRandomNoise(sd: Double, size: Int, value: Double): Double{
-        return value + Random().nextGaussian() * PRIVACY_FACTOR * (sd / sqrt(size.toDouble()))
+    override fun distance(val1: Double, val2: Double): Double {
+        return val1 - val2
     }
 }
