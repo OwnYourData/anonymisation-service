@@ -4,6 +4,8 @@ import eu.ownyourdata.anonymisationservice.dto.AnonymizationType
 import eu.ownyourdata.anonymisationservice.dto.Configuration
 import eu.ownyourdata.anonymisationservice.service.ConfigObject
 import java.lang.IllegalArgumentException
+import kotlin.math.floor
+import kotlin.math.pow
 
 fun anonymizerFactory(config: Configuration, configObject: ConfigObject): Anonymiser {
     return when(config.anonaymizationType) {
@@ -41,5 +43,11 @@ interface Anonymiser {
                 anonymizedValues[positionNextValue++]
             }
         }.toList()
+    }
+
+    fun calculateNumberOfBuckets(dataSize: Int, numberAttributes: Int): Int {
+        return floor(1.0 /
+                (1.0 - (1.0 - 0.99.pow(1.0 / dataSize)).pow(1.0 / dataSize)).pow(1.0 / numberAttributes)
+        ).toInt()
     }
 }

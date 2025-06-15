@@ -8,7 +8,8 @@ abstract class Randomization<T: Comparable<T>>: Anonymiser {
 
     abstract fun distance(val1: T, val2: T): Double
 
-    protected fun createDistancePerInstance(values: List<T>, x: Int): List<Pair<T, Double>> {
+    protected fun createDistancePerInstance(values: List<T>,
+                                            x: Int): List<Pair<T, Double>> {
         val result: List<Pair<Int, T>> = values
             .withIndex()
             .sortedBy { it.value }

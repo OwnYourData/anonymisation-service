@@ -67,7 +67,6 @@ class ConfigObject(modelURL: String) {
             }
         """.trimIndent()
         val query = QueryFactory.create(sparqlQuery)
-        this.configurationModel.write(System.out)
         QueryExecutionFactory.create(query, configurationModel).use { qe ->
             val result = qe.execSelect()
             return result.asSequence().map { entry -> Configuration(
