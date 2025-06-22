@@ -3,8 +3,8 @@ import java.util.*
 
 abstract class Generalization<T : Comparable<T>>: Anonymiser {
 
-    override fun anonymise(values: MutableList<Any>): List<Any> {
-        val bucketNumber = calculateNumberOfBuckets(values.size)
+    override fun anonymise(values: MutableList<Any>, anonymisationCount: Int): List<Any> {
+        val bucketNumber = calculateNumberOfBuckets(values.size, anonymisationCount)
         val quantiles: SortedMap<Int, Pair<IntArray, List<T>>> =  values.mapIndexed {
                 index, it -> convertValues(index, it)
         }.sortedBy { v -> v.second }
@@ -22,13 +22,6 @@ abstract class Generalization<T : Comparable<T>>: Anonymiser {
             .sortedBy { pair -> pair.second }
             .map { pair -> pair.first }
             .toList()
-    }
-
-    /**
-     * For now the square root of the input sequence is taken. Evaluate if this leads to good results in the future
-     */
-    private fun calculateNumberOfBuckets(dataSize: Int): Int {
-        return kotlin.math.sqrt(dataSize.toDouble()).toInt()
     }
 
     private fun calculateQuantile(dataSize: Int, nrQuantile: Int, index: Int): Int {

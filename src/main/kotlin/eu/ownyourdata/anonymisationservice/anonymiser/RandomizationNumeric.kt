@@ -1,17 +1,11 @@
 package eu.ownyourdata.anonymisationservice.anonymiser
 
 import java.lang.IllegalArgumentException
+import java.time.LocalDate
 import java.util.Random
-import kotlin.math.pow
-import kotlin.math.sqrt
 
-class RandomizationNumeric: Randomization() {
-
-    /**
-     * Eventuell noch eine unterschiedliche Implementierung für ratio und intervalue skaliert
-     */
-
-    override fun anonymise(values: MutableList<Any>): List<Any> {
+class RandomizationNumeric: Randomization<Double>() {
+    override fun anonymise(values: MutableList<Any>, anonymisationCount: Int): List<Any> {
         val numericValues = values.stream().map { value ->
             when (value) {
                 is Double -> value
@@ -23,13 +17,25 @@ class RandomizationNumeric: Randomization() {
                 }
                 else -> throw IllegalArgumentException("Numeric Generalization was requested but the input $value is not numeric")
             }
-        }.toList().toDoubleArray()
-        val mean = numericValues.average()
-        val sd = sqrt(numericValues.map { (it - mean).pow(2) }.average())
-        return numericValues.map { v -> addRandomNoise(sd, values.size, v) }
+        }.toList()
+        val minimum = numericValues.min()
+        val maximum = numericValues.max()
+        val distances = createDistancePerInstance(
+            numericValues,
+            values.size/calculateNumberOfBuckets(values.size, anonymisationCount)
+        )
+        return distances.map { v -> calculateNoise(minimum, maximum, v.first, v.second) }
     }
 
-    private fun addRandomNoise(sd: Double, size: Int, value: Double): Double{
-        return value + Random().nextGaussian() * PRIVACY_FACTOR * (sd / sqrt(size.toDouble()))
+    private fun calculateNoise(min: Double, max: Double, value: Double, distance: Double): Double {
+        val noise = Random().nextGaussian() * distance
+        return when {
+            value + noise < min || value + noise > max -> value - noise
+            else -> value + noise
+        }
+    }
+
+    override fun distance(val1: Double, val2: Double): Double {
+        return val1 - val2
     }
 }
