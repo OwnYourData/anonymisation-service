@@ -27,7 +27,7 @@
         <url/>
     </scm>
     <properties>
-        <java.version>19</java.version>
+        <java.version>17</java.version>
         <kotlin.version>1.9.0</kotlin.version>
         <jena.version>5.2.0</jena.version>
         <reasoner.version>1.4.5.519</reasoner.version>
