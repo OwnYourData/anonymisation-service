@@ -3,7 +3,6 @@
     "data":[
         {
             "Name": "Name 1",
-            "Geburtsdatum": "1975-11-01",
             "Adresse": {
                 "Detail": "Musterstraße 1",
                 "City": "St-Pölten",
@@ -23,7 +22,6 @@
                 "State": "Niederösterreich",
                 "Country": "Österreich"
             },
-            "Geburtsdatum": "1985-12-12",
             "Gehalt": 100000
         },
         {
@@ -39,7 +37,6 @@
         },
         {
             "Name": "Name 4",
-            "Geburtsdatum": "1950-07-07",
             "Adresse": {
                 "Detail": "Musterstraße 2",
                 "City": "St-Pölten",
@@ -49,7 +46,6 @@
             }
         },
         {
-            "Geburtsdatum": "1990-01-01",
             "Adresse": {
                 "Detail": "Musterstraße 3",
                 "City": "Wien",
@@ -61,12 +57,10 @@
         },
         {
             "Name": "Name 6",
-            "Geburtsdatum": "2019-05-14",
             "Gehalt": 12000
         },
         {
             "Name": "Name 7",
-            "Geburtsdatum": "1974-01-01",
             "Adresse": {
                 "Detail": "Musterstraße 3",
                 "City": "Wien",
@@ -78,7 +72,7 @@
         },
         {
             "Name": "Name 8",
-            "Geburtsdatum": "1966-06-06","Adresse": {
+            "Adresse": {
                 "Detail": "Musterstraße 4",
                 "City": "Wien",
                 "Zip": 1010,
@@ -88,12 +82,10 @@
             "Gehalt": 30000
         },
         {
-            "Name": "Name 9",
-            "Geburtsdatum": "1979-01-25"
+            "Name": "Name 9"
         },
         {
             "Name": "Name 10",
-            "Geburtsdatum": "1949-11-01",
             "Gehalt": 20000
         }
     ]

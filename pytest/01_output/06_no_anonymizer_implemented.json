@@ -1,5 +1,51 @@
 {
   "version": "1.0.0",
-  "valid": false,
-  "errorMessage": "For the attribute 'Invalid Attribute' no anonymiser is defined."
+  "valid": true,
+  "anonymisedData": [
+    {
+      "Adresse": "Niederösterreich",
+      "Gehalt": "<= 100000.0",
+      "Invalid Attribute": "some value",
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Niederösterreich",
+      "Gehalt": "<= 100000.0",
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Niederösterreich",
+      "Gehalt": "<= 100000.0",
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Niederösterreich",
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Wien",
+      "Gehalt": "<= 100000.0"
+    },
+    {
+      "Gehalt": "<= 100000.0",
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Wien",
+      "Gehalt": "<= 100000.0",
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Wien",
+      "Gehalt": "<= 100000.0",
+      "Name": "*****"
+    },
+    {
+      "Name": "*****"
+    },
+    {
+      "Gehalt": "<= 100000.0",
+      "Name": "*****"
+    }
+  ]
 }

@@ -4,17 +4,17 @@
   "anonymisedData": [
     {
       "Adresse": "Niederösterreich",
-      "Gehalt": "<= 25000.0",
+      "Gehalt": "<= 100000.0",
       "Name": "*****"
     },
     {
       "Adresse": "Niederösterreich",
-      "Gehalt": ">= 25000.0",
+      "Gehalt": "<= 100000.0",
       "Name": "*****"
     },
     {
       "Adresse": "Niederösterreich",
-      "Gehalt": ">= 25000.0",
+      "Gehalt": "<= 100000.0",
       "Name": "*****"
     },
     {
@@ -23,27 +23,71 @@
     },
     {
       "Adresse": "Wien",
-      "Gehalt": ">= 25000.0"
+      "Gehalt": "<= 100000.0"
     },
     {
-      "Gehalt": "<= 25000.0",
+      "Gehalt": "<= 100000.0",
       "Name": "*****"
     },
     {
       "Adresse": "Wien",
-      "Gehalt": "<= 25000.0",
+      "Gehalt": "<= 100000.0",
       "Name": "*****"
     },
     {
       "Adresse": "Wien",
-      "Gehalt": ">= 25000.0",
+      "Gehalt": "<= 100000.0",
       "Name": "*****"
     },
     {
       "Name": "*****"
     },
     {
-      "Gehalt": "<= 25000.0",
+      "Gehalt": "<= 100000.0",
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Niederösterreich",
+      "Gehalt": "<= 100000.0",
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Niederösterreich",
+      "Gehalt": "<= 100000.0",
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Niederösterreich",
+      "Gehalt": "<= 100000.0",
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Niederösterreich",
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Wien",
+      "Gehalt": "<= 100000.0"
+    },
+    {
+      "Gehalt": "<= 100000.0",
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Wien",
+      "Gehalt": "<= 100000.0",
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Wien",
+      "Gehalt": "<= 100000.0",
+      "Name": "*****"
+    },
+    {
+      "Name": "*****"
+    },
+    {
+      "Gehalt": "<= 100000.0",
       "Name": "*****"
     }
   ]
