@@ -10,6 +10,7 @@ abstract class Randomization<T: Comparable<T>>: Anonymiser {
 
     protected fun createDistancePerInstance(values: List<T>,
                                             x: Int): List<Pair<T, Double>> {
+        val adjustedX = if (x == values.size) x - 1 else x
         val result: List<Pair<Int, T>> = values
             .withIndex()
             .sortedBy { it.value }
@@ -17,18 +18,19 @@ abstract class Randomization<T: Comparable<T>>: Anonymiser {
         var lowerBound = 0
         val distances = LinkedList<Pair<Int, Double>>()
         for ((index, value) in result.withIndex()) {
+            if (x == values.size)
             while (
-                lowerBound < values.size - (x + 1) && (
-                        lowerBound < index - x ||
+                lowerBound < values.size - (adjustedX + 1) && (
+                        lowerBound < index - adjustedX ||
                                 abs(distance(result[lowerBound].second, value.second)) >
-                                abs(distance(result[lowerBound+x+1].second, value.second))
+                                abs(distance(result[lowerBound+adjustedX+1].second, value.second))
                         )
             ) {
                 lowerBound ++
             }
             val distance = max(
                 abs(distance(result[lowerBound].second, value.second)),
-                abs(distance(result[lowerBound+x].second, value.second))
+                abs(distance(result[lowerBound+adjustedX].second, value.second))
             )
             distances.add(Pair(value.first, distance))
         }
