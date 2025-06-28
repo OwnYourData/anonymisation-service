@@ -16,6 +16,8 @@ In general, the anonymization process takes place in three steps:
 * Extracting the configuration form the knowledge graph
 * Creation of anonymization operators for each attribute
 * Application of the anonymization operators
+* The figure below illustrates the basic procedure, showing the interaction with the provided data.
+![New_Architecture](figures/Anonymizer.png)
 
 #### Fetching of the Configuration
 At the beginning, the configuration is fetched from the provided URL. The configuration must be stored as a knowledge graph in JSON-LD format. Once the input is fetched, it is validated to ensure that it is valid JSON-LD.
@@ -29,7 +31,8 @@ If the configuration is valid, an anonymizer is instantiated for each attribute.
 #### Anonymization
 To make the anonymizer list applicable, the input data must be restructured. The anonymizer processes data grouped by instance rather than by attribute. Therefore, a list of values is created for each attribute. The corresponding anonymizer is then applied to each list.
 
-An anonymizer takes a list of attribute values as input and returns the anonymized values in the same order. Finally, the anonymized attribute lists are transformed back into an instance-oriented schema.
+An anonymizer takes a list of attribute values as input and returns the anonymized values in the same order. Finally, the anonymized attribute lists are transformed back into an instance-oriented schema.The process is visualized below.
+![Anonymization_Process](figures/Anonymization_Process.png)
 
 ### Anonymization Operations
 
@@ -47,7 +50,7 @@ In the generalization the attributes are classified into buckets and the class l
 $$ nrBuckets = \sqrt( numberInstances )$$
 Afterwards, the individuals are assigned to buckets based on their value. An approach was chosen in which each bucket constains the same number of values. Thereby, no single buckets are created for outliers making them easily distinguishable from other instances in the anonymized data set. The instances are sorted and then assigned to a bucket based on their position. Based on the values in each a bucket a label for the bucket is created. 
 
- ![Generalization](https://hackmd.io/_uploads/HyRYzPG91g.png)
+ ![Generalization](figures/Generalization.png)
 
 ##### Generalization for Object
 
@@ -59,7 +62,7 @@ Currently, the criterion for "sufficient anonymization" at any level is that eac
 
 A common example where this type of anonymization can be applied is addresses. The process is illustrated in the figure below. It first checks whether using the city-level attribute provides enough anonymization. Since there are six groups with only one value each, this level is not sufficient. The process then evaluates the state level, where three groups are formed—but two of them still contain fewer than three values. Finally, the country level is assessed, and since each group contains at least three values, it is used for output.
 
-![address_generalization](https://hackmd.io/_uploads/Hyg62_7jye.png)
+![address_generalization](figures/address_generalization.png)
 
 
 #### Randomization
