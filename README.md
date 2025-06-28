@@ -38,6 +38,18 @@ An anonymizer takes a list of attribute values as input and returns the anonymiz
 
 The service is implemented in a way to enable easy intergration of new anonymization operation.
 
+#### Number of Buckets
+
+For both generalization and randomization, a bucket count (denoted as g) is required. This value is derived from the number of instances k in the dataset and the number of anonymized attributes n. The formula is shown below.
+
+The number of buckets is calculated to ensure at least a 99% probability that no individual in the dataset is uniquely identifiable.
+
+* Line 1 defines the probability that two individuals share the same anonymized values across all attributes.
+* Line 2 defines the probability that a given individual is not unique—i.e., at least one other individual has the same anonymized attribute values.
+* Line 3 defines the probability that no individual in the dataset is unique.
+* In Line 4, the number of buckets is computed by rearranging the formula from Line 3 to determine the required group count that ensures, with at least 99% probability, that all individuals in the dataset are non-unique.
+![Bucket_Calculation](figures/Bucket_Calculation.png)
+
 #### Masking
 
 In maksing the attributes is completly hidden. The original value is replaces with the maksing string "****\*". While this ensures full anonymization, no information of the underlying data is kept in the data. This type of anonymization can be applied to every data type. 
@@ -67,12 +79,7 @@ A common example where this type of anonymization can be applied is addresses. T
 
 #### Randomization
 
-In randomization, a random value is added to each data point. The added value follows a normal distribution, with its spread depending on the number of instances, the standard deviation, and a parameter value. The random value is calculated using the formula below:
-
-$$ randomSalt = \mathcal{N}(0,1) * \text{PRIVACY_FACTOR} * \left(\frac{\text{sd}}{\sqrt{\text{size}}}\right)$$
-
-The privacy factor is a constant that defines to what extent anonymization is applied. Randomization is implemented for numeric data and dates. 
-
+In randomization, a random value is added to each data point. The added value follows a normal distribution, with its spread depending on the number of instances, the distribution of the data, and the number of buckets used. The salt is then the normal distribution multiplied by the distance to the ith closest values, where i is the number of instances per bucket.
 
 https://anonymizer.go-data.at/swagger-ui/index.html#/
 
