@@ -8,16 +8,15 @@
 * The allowed anonymization operations depend on the attribute type and datatype, as defined in the ontology
 * The implemented anonymization methods are described below
 * The swagger documentation of the service is accessible via https://anonymizer.go-data.at/swagger-ui/index.html#/
+* The an example scenario
+![New_Architecture](figures/RunningExample.png)
 
 ### Anonymization Process
-
 In general, the anonymization process takes place in three steps:
 * Fetching of the configuration
 * Extracting the configuration form the knowledge graph
 * Creation of anonymization operators for each attribute
 * Application of the anonymization operators
-* The figure below illustrates the basic procedure, showing the interaction with the provided data.
-![New_Architecture](figures/Anonymizer.png)
 
 #### Fetching of the Configuration
 At the beginning, the configuration is fetched from the provided URL. The configuration must be stored as a knowledge graph in JSON-LD format. Once the input is fetched, it is validated to ensure that it is valid JSON-LD.
