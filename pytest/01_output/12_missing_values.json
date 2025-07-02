@@ -4,61 +4,26 @@
   "anonymisedData": [
     {
       "Adresse": "Niederösterreich",
-      "Gehalt": {},
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      },
       "Name": "*****"
     },
     {
       "Adresse": "Niederösterreich",
-      "Gehalt": {},
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      },
       "Name": "*****"
     },
     {
       "Adresse": "Niederösterreich",
-      "Gehalt": {},
-      "Name": "*****"
-    },
-    {
-      "Adresse": "Niederösterreich",
-      "Name": "*****"
-    },
-    {
-      "Adresse": "Wien",
-      "Gehalt": {}
-    },
-    {
-      "Gehalt": {},
-      "Name": "*****"
-    },
-    {
-      "Adresse": "Wien",
-      "Gehalt": {},
-      "Name": "*****"
-    },
-    {
-      "Adresse": "Wien",
-      "Gehalt": {},
-      "Name": "*****"
-    },
-    {
-      "Name": "*****"
-    },
-    {
-      "Gehalt": {},
-      "Name": "*****"
-    },
-    {
-      "Adresse": "Niederösterreich",
-      "Gehalt": {},
-      "Name": "*****"
-    },
-    {
-      "Adresse": "Niederösterreich",
-      "Gehalt": {},
-      "Name": "*****"
-    },
-    {
-      "Adresse": "Niederösterreich",
-      "Gehalt": {},
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      },
       "Name": "*****"
     },
     {
@@ -67,27 +32,110 @@
     },
     {
       "Adresse": "Wien",
-      "Gehalt": {}
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      }
     },
     {
-      "Gehalt": {},
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      },
       "Name": "*****"
     },
     {
       "Adresse": "Wien",
-      "Gehalt": {},
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      },
       "Name": "*****"
     },
     {
       "Adresse": "Wien",
-      "Gehalt": {},
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      },
       "Name": "*****"
     },
     {
       "Name": "*****"
     },
     {
-      "Gehalt": {},
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      },
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Niederösterreich",
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      },
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Niederösterreich",
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      },
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Niederösterreich",
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      },
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Niederösterreich",
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Wien",
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      }
+    },
+    {
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      },
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Wien",
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      },
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Wien",
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      },
+      "Name": "*****"
+    },
+    {
+      "Name": "*****"
+    },
+    {
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      },
       "Name": "*****"
     }
   ]

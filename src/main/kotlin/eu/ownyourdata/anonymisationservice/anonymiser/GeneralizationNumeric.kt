@@ -37,12 +37,8 @@ class GeneralizationNumeric: Generalization<Double>() {
                 (values.min() + prevVal) / 2
             } else values.min()
             val resultJson = Json.createObjectBuilder()
-            if (i != 0) {
-                resultJson.add("min", lowerBound)
-            }
-            if (i != quantiles.size - 1) {
-                resultJson.add("max", upperBound)
-            }
+            resultJson.add("min", lowerBound)
+            resultJson.add("max", upperBound)
             quantileValues[resultJson.build()] = indices
         }
         return quantileValues

@@ -4,19 +4,28 @@
   "anonymisedData": [
     {
       "Adresse": "Niederösterreich",
-      "Gehalt": {},
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      },
       "Invalid Attribute": "some value",
       "Name": "*****"
     },
     {
       "Adresse": "Niederösterreich",
-      "Gehalt": {},
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      },
       "Invalid Attribute": "null",
       "Name": "*****"
     },
     {
       "Adresse": "Niederösterreich",
-      "Gehalt": {},
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      },
       "Invalid Attribute": "null",
       "Name": "*****"
     },
@@ -27,23 +36,35 @@
     },
     {
       "Adresse": "Wien",
-      "Gehalt": {},
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      },
       "Invalid Attribute": "null"
     },
     {
-      "Gehalt": {},
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      },
       "Invalid Attribute": "null",
       "Name": "*****"
     },
     {
       "Adresse": "Wien",
-      "Gehalt": {},
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      },
       "Invalid Attribute": "null",
       "Name": "*****"
     },
     {
       "Adresse": "Wien",
-      "Gehalt": {},
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      },
       "Invalid Attribute": "null",
       "Name": "*****"
     },
@@ -52,7 +73,10 @@
       "Name": "*****"
     },
     {
-      "Gehalt": {},
+      "Gehalt": {
+        "min": 10000.0,
+        "max": 100000.0
+      },
       "Invalid Attribute": "null",
       "Name": "*****"
     }
