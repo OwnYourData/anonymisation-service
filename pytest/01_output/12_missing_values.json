@@ -4,61 +4,17 @@
   "anonymisedData": [
     {
       "Adresse": "Niederösterreich",
-      "Gehalt": "<= 100000.0",
+      "Gehalt": {},
       "Name": "*****"
     },
     {
       "Adresse": "Niederösterreich",
-      "Gehalt": "<= 100000.0",
+      "Gehalt": {},
       "Name": "*****"
     },
     {
       "Adresse": "Niederösterreich",
-      "Gehalt": "<= 100000.0",
-      "Name": "*****"
-    },
-    {
-      "Adresse": "Niederösterreich",
-      "Name": "*****"
-    },
-    {
-      "Adresse": "Wien",
-      "Gehalt": "<= 100000.0"
-    },
-    {
-      "Gehalt": "<= 100000.0",
-      "Name": "*****"
-    },
-    {
-      "Adresse": "Wien",
-      "Gehalt": "<= 100000.0",
-      "Name": "*****"
-    },
-    {
-      "Adresse": "Wien",
-      "Gehalt": "<= 100000.0",
-      "Name": "*****"
-    },
-    {
-      "Name": "*****"
-    },
-    {
-      "Gehalt": "<= 100000.0",
-      "Name": "*****"
-    },
-    {
-      "Adresse": "Niederösterreich",
-      "Gehalt": "<= 100000.0",
-      "Name": "*****"
-    },
-    {
-      "Adresse": "Niederösterreich",
-      "Gehalt": "<= 100000.0",
-      "Name": "*****"
-    },
-    {
-      "Adresse": "Niederösterreich",
-      "Gehalt": "<= 100000.0",
+      "Gehalt": {},
       "Name": "*****"
     },
     {
@@ -67,27 +23,71 @@
     },
     {
       "Adresse": "Wien",
-      "Gehalt": "<= 100000.0"
+      "Gehalt": {}
     },
     {
-      "Gehalt": "<= 100000.0",
+      "Gehalt": {},
       "Name": "*****"
     },
     {
       "Adresse": "Wien",
-      "Gehalt": "<= 100000.0",
+      "Gehalt": {},
       "Name": "*****"
     },
     {
       "Adresse": "Wien",
-      "Gehalt": "<= 100000.0",
+      "Gehalt": {},
       "Name": "*****"
     },
     {
       "Name": "*****"
     },
     {
-      "Gehalt": "<= 100000.0",
+      "Gehalt": {},
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Niederösterreich",
+      "Gehalt": {},
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Niederösterreich",
+      "Gehalt": {},
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Niederösterreich",
+      "Gehalt": {},
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Niederösterreich",
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Wien",
+      "Gehalt": {}
+    },
+    {
+      "Gehalt": {},
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Wien",
+      "Gehalt": {},
+      "Name": "*****"
+    },
+    {
+      "Adresse": "Wien",
+      "Gehalt": {},
+      "Name": "*****"
+    },
+    {
+      "Name": "*****"
+    },
+    {
+      "Gehalt": {},
       "Name": "*****"
     }
   ]

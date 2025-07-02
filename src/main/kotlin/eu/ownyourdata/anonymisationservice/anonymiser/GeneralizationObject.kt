@@ -2,6 +2,8 @@ package eu.ownyourdata.anonymisationservice.anonymiser
 
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
+import jakarta.json.Json
+import jakarta.json.JsonValue
 
 
 open class GeneralizationObject(objectAttributes: List<String>) : Anonymiser {
@@ -11,7 +13,7 @@ open class GeneralizationObject(objectAttributes: List<String>) : Anonymiser {
         this.objectAttributes = objectAttributes
     }
 
-    override fun anonymise(values: MutableList<Any>, anonymisationCount: Int): List<Any> {
+    override fun anonymise(values: MutableList<Any>, anonymisationCount: Int): List<JsonValue> {
         val objectValues = values.mapIndexed { index, value ->
             try {
                 val map = value as? Map<*, *>
@@ -28,9 +30,9 @@ open class GeneralizationObject(objectAttributes: List<String>) : Anonymiser {
                 valueTransform = { it.first }
             )
             val vals = checkGeneralizationLevel(groups)
-            if (!vals.isNullOrEmpty()) return vals
+            if (!vals.isNullOrEmpty()) return vals.stream().map { value -> Json.createValue(value) }.toList()
         }
-        return values.stream().map { "*****" }.toList()
+        return values.stream().map { Json.createValue("*****") }.toList()
     }
 
     private fun checkGeneralizationLevel(generalization: Map<String, List<Int>>): List<String>? {
