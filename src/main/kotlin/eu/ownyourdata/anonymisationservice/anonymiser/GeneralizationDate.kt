@@ -39,12 +39,8 @@ class GeneralizationDate: Generalization<LocalDate>() {
                 values.min().plusDays(ChronoUnit.DAYS.between(values.min(), prevVal)/2)
             } else values.min()
             val resultJson = Json.createObjectBuilder()
-            if (i != 0) {
-                resultJson.add("max", upperBound.toString())
-            }
-            if (i != quantiles.size - 1) {
-                resultJson.add("min", lowerBound.toString())
-            }
+            resultJson.add("max", i != 0)
+            resultJson.add("min", lowerBound.toString())
             quantileValues[resultJson.build()] = indices
         }
         return quantileValues
