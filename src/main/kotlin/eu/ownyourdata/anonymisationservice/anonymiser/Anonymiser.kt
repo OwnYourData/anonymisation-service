@@ -3,6 +3,7 @@ package eu.ownyourdata.anonymisationservice.anonymiser
 import eu.ownyourdata.anonymisationservice.dto.AnonymizationType
 import eu.ownyourdata.anonymisationservice.dto.Configuration
 import eu.ownyourdata.anonymisationservice.service.ConfigObject
+import jakarta.json.JsonValue
 import java.lang.IllegalArgumentException
 import kotlin.math.floor
 import kotlin.math.pow
@@ -29,9 +30,9 @@ interface Anonymiser {
     /**
      * The function has the input and return parameter any as the input validation takes place in the specific functions
      */
-    fun anonymise(values: MutableList<Any>, anonymisationCount: Int): List<Any>
+    fun anonymise(values: MutableList<Any>, anonymisationCount: Int): List<JsonValue>
 
-    fun anonymiseWithNulls(values: MutableList<Any?>, anonymisationCount: Int): List<Any?> {
+    fun anonymiseWithNulls(values: MutableList<Any?>, anonymisationCount: Int): List<JsonValue?> {
         val nulls: List<Boolean> = values.stream().map { v -> v == null }.toList()
         val noNullsValues: MutableList<Any> = values.filterNotNull().toMutableList()
         val anonymizedValues = anonymise(noNullsValues, anonymisationCount)

@@ -5,6 +5,8 @@ import eu.ownyourdata.anonymisationservice.anonymiser.anonymizerFactory
 import eu.ownyourdata.anonymisationservice.dto.AnonymizationType
 import eu.ownyourdata.anonymisationservice.dto.Configuration
 import eu.ownyourdata.anonymisationservice.dto.RequestDTO
+import jakarta.json.Json
+import jakarta.json.JsonValue
 import org.springframework.http.ResponseEntity
 import java.lang.IllegalArgumentException
 import java.util.*
@@ -37,7 +39,7 @@ class Anonymisation(private val configObject: ConfigObject, val data: List<Map<S
         anonymizer = initAnonymizer()
     }
 
-    fun applyAnonymistation(): List<Map<String, Any>> {
+    fun applyAnonymistation(): List<Map<String, JsonValue>> {
         val verticalSchema: Map<String, MutableList<Any?>> = createValuesPerAttribute()
         val anonymisedValues = applyAnonymizer(verticalSchema)
         return createValuesPerInstance(anonymisedValues)
@@ -61,23 +63,23 @@ class Anonymisation(private val configObject: ConfigObject, val data: List<Map<S
         return valuesPerAttribute
     }
 
-    private fun createValuesPerInstance(valuesPerAttribute: Map<String, List<Any?>>): List<Map<String, Any>> {
-        val instances = ArrayList<MutableMap<String, Any>>()
+    private fun createValuesPerInstance(valuesPerAttribute: Map<String, List<JsonValue?>>): List<Map<String, JsonValue>> {
+        val instances = ArrayList<MutableMap<String, JsonValue>>()
         for (i in 0 until valuesPerAttribute.values.first().size) {
-            instances.add(i, HashMap<String, Any>())
+            instances.add(i, HashMap<String, JsonValue>())
         }
         valuesPerAttribute.entries.forEach { attribute ->
             for(i in 0 until attribute.value.size) {
                 if (attribute.value[i] != null) {
-                    instances[i][attribute.key] = attribute.value[i] as Any
+                    instances[i][attribute.key] = attribute.value[i] as JsonValue
                 }
             }
         }
         return instances
     }
 
-    private fun applyAnonymizer(verticalSchema: Map<String, MutableList<Any?>>): Map<String, List<Any?>> {
-        val anonymisedValues = HashMap<String, List<Any?>>()
+    private fun applyAnonymizer(verticalSchema: Map<String, MutableList<Any?>>): Map<String, List<JsonValue?>> {
+        val anonymisedValues = HashMap<String, List<JsonValue?>>()
         val attributeCount = verticalSchema.keys.filter { attribute ->
             val config: Optional<Configuration> = this.configObject.configuration.stream()
                 .filter { c -> c.attribute == attribute.lowercase() }
@@ -95,7 +97,7 @@ class Anonymisation(private val configObject: ConfigObject, val data: List<Map<S
                     throw IllegalArgumentException("Error when applying anonymization to attribute ${e.key}: ${error.message}")
                 }
             } else {
-                anonymisedValues[e.key] = e.value
+                anonymisedValues[e.key] = e.value.stream().map { v -> Json.createValue(v.toString()) }.toList()
             }
         }
         return anonymisedValues

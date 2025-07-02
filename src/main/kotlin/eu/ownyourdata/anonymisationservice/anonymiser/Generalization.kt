@@ -1,9 +1,10 @@
 package eu.ownyourdata.anonymisationservice.anonymiser
+import jakarta.json.JsonValue
 import java.util.*
 
 abstract class Generalization<T : Comparable<T>>: Anonymiser {
 
-    override fun anonymise(values: MutableList<Any>, anonymisationCount: Int): List<Any> {
+    override fun anonymise(values: MutableList<Any>, anonymisationCount: Int): List<JsonValue> {
         val bucketNumber = calculateNumberOfBuckets(values.size, anonymisationCount)
         val quantiles: SortedMap<Int, Pair<IntArray, List<T>>> =  values.mapIndexed {
                 index, it -> convertValues(index, it)
@@ -30,5 +31,5 @@ abstract class Generalization<T : Comparable<T>>: Anonymiser {
 
     abstract fun convertValues(index: Int, value: Any): Pair<Int, T>
 
-    abstract fun getQuantileValues(quantiles: SortedMap<Int, Pair<IntArray, List<T>>>): Map<String, IntArray>
+    abstract fun getQuantileValues(quantiles: SortedMap<Int, Pair<IntArray, List<T>>>): Map<JsonValue, IntArray>
 }

@@ -1,8 +1,9 @@
 package eu.ownyourdata.anonymisationservice.anonymiser
 
+import jakarta.json.Json
+import jakarta.json.JsonValue
 import java.lang.IllegalArgumentException
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 import java.util.*
 
@@ -22,8 +23,8 @@ class GeneralizationDate: Generalization<LocalDate>() {
     }
 
     override fun getQuantileValues(quantiles: SortedMap<Int, Pair<IntArray, List<LocalDate>>>):
-            Map<String, IntArray> {
-        val quantileValues = HashMap<String, IntArray>()
+            Map<JsonValue, IntArray> {
+        val quantileValues = HashMap<JsonValue, IntArray>()
         for (i in 0 until quantiles.size) {
             val values = quantiles[i]?.second
                 ?: throw IllegalArgumentException("The required quantile is not defined in the input")
@@ -37,11 +38,14 @@ class GeneralizationDate: Generalization<LocalDate>() {
             val lowerBound = if (prevVal != null) {
                 values.min().plusDays(ChronoUnit.DAYS.between(values.min(), prevVal)/2)
             } else values.min()
-            when (i) {
-                0 -> quantileValues["before $upperBound"] = indices
-                quantiles.size - 1 -> quantileValues["after $lowerBound"] = indices
-                else -> quantileValues["between $lowerBound and $upperBound"] = indices
+            val resultJson = Json.createObjectBuilder()
+            if (i != 0) {
+                resultJson.add("max", upperBound.toString())
             }
+            if (i != quantiles.size - 1) {
+                resultJson.add("min", lowerBound.toString())
+            }
+            quantileValues[resultJson.build()] = indices
         }
         return quantileValues
     }

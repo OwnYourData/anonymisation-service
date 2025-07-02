@@ -1,11 +1,13 @@
 package eu.ownyourdata.anonymisationservice.anonymiser
 
+import jakarta.json.Json
+import jakarta.json.JsonValue
 import java.lang.IllegalArgumentException
 import java.time.LocalDate
 import java.util.Random
 
 class RandomizationNumeric: Randomization<Double>() {
-    override fun anonymise(values: MutableList<Any>, anonymisationCount: Int): List<Any> {
+    override fun anonymise(values: MutableList<Any>, anonymisationCount: Int): List<JsonValue> {
         val numericValues = values.stream().map { value ->
             when (value) {
                 is Double -> value
@@ -24,7 +26,7 @@ class RandomizationNumeric: Randomization<Double>() {
             numericValues,
             values.size/calculateNumberOfBuckets(values.size, anonymisationCount)
         )
-        return distances.map { v -> calculateNoise(minimum, maximum, v.first, v.second) }
+        return distances.map { v -> Json.createValue(calculateNoise(minimum, maximum, v.first, v.second)) }
     }
 
     private fun calculateNoise(min: Double, max: Double, value: Double, distance: Double): Double {

@@ -1,5 +1,7 @@
 package eu.ownyourdata.anonymisationservice.anonymiser
 
+import jakarta.json.Json
+import jakarta.json.JsonValue
 import java.lang.IllegalArgumentException
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
@@ -7,7 +9,7 @@ import java.util.*
 
 class RandomizationDate: Randomization<LocalDate>() {
 
-    override fun anonymise(values: MutableList<Any>, anonymisationCount: Int): List<Any> {
+    override fun anonymise(values: MutableList<Any>, anonymisationCount: Int): List<JsonValue> {
         val dateValues = values.stream().map { value ->
             when (value) {
                 is String -> runCatching {
@@ -27,7 +29,7 @@ class RandomizationDate: Randomization<LocalDate>() {
             dateValues,
             values.size/calculateNumberOfBuckets(values.size, anonymisationCount)
         )
-        return distances.map { v -> calculateNoise(minimumDate, maximumDate, v.first, v.second)}
+        return distances.map { v -> Json.createValue(calculateNoise(minimumDate, maximumDate, v.first, v.second).toString())}
     }
 
     private fun calculateNoise(min: LocalDate, max: LocalDate, value: LocalDate, distance: Double): LocalDate {

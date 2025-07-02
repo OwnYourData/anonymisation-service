@@ -1,6 +1,7 @@
 package eu.ownyourdata.anonymisationservice.service
 
 import jakarta.json.Json
+import jakarta.json.JsonValue
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 
@@ -15,7 +16,7 @@ fun createErrorResponse(errorMessage: String): ResponseEntity<String> {
     )
 }
 
-fun createValidResponse(data: List<Map<String, Any>>): ResponseEntity<String> {
+fun createValidResponse(data: List<Map<String, JsonValue>>): ResponseEntity<String> {
     val builder = Json.createObjectBuilder()
     builder.add("version", Anonymisation.VERSION)
     builder.add("valid", true)
@@ -23,7 +24,7 @@ fun createValidResponse(data: List<Map<String, Any>>): ResponseEntity<String> {
     data.forEach { instance ->
         val jsonObject = Json.createObjectBuilder()
         instance.entries.forEach{ attribute ->
-            jsonObject.add(attribute.key, attribute.value.toString())
+            jsonObject.add(attribute.key, attribute.value)
         }
         arrayBuilder.add(jsonObject)
     }
