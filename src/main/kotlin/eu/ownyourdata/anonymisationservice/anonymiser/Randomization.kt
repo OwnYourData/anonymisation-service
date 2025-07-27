@@ -38,4 +38,8 @@ abstract class Randomization<T: Comparable<T>>: Anonymiser {
             .sortedBy{ it.first }
             .map { p -> Pair(values[p.first], p.second) }
     }
+
+    override fun getAttributeName(attribute: String): String {
+        return attribute
+    }
 }

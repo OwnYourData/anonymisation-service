@@ -1,6 +1,8 @@
 package eu.ownyourdata.anonymisationservice.service
 
+import com.fasterxml.jackson.databind.JsonNode
 import eu.ownyourdata.anonymisationservice.anonymiser.Anonymiser
+import eu.ownyourdata.anonymisationservice.anonymiser.Generalization
 import eu.ownyourdata.anonymisationservice.anonymiser.anonymizerFactory
 import eu.ownyourdata.anonymisationservice.dto.AnonymizationType
 import eu.ownyourdata.anonymisationservice.dto.Configuration
@@ -82,17 +84,18 @@ class Anonymisation(private val configObject: ConfigObject, val data: List<Map<S
         val anonymisedValues = HashMap<String, List<JsonValue?>>()
         val attributeCount = verticalSchema.keys.filter { attribute ->
             val config: Optional<Configuration> = this.configObject.configuration.stream()
-                .filter { c -> c.attribute == attribute.lowercase() }
+                .filter { c -> c.attribute == attribute }
                 .findFirst()
             config.isPresent && (
                     config.get().anonaymizationType == AnonymizationType.RANDOMIZATION ||
                     config.get().anonaymizationType == AnonymizationType.GENERALIZATION)
         }.size
         verticalSchema.entries.forEach { e ->
-            val anonymiserInstance = anonymizer[e.key.lowercase()]
+            val anonymiserInstance = anonymizer[e.key]
             if (anonymiserInstance != null) {
                 try {
-                    anonymisedValues[e.key] = anonymiserInstance.anonymiseWithNulls(e.value, attributeCount)
+                    val jsonValues: List<JsonValue?> = anonymiserInstance.anonymiseWithNulls(e.value, attributeCount)
+                    anonymisedValues[anonymiserInstance.getAttributeName(e.key)] = jsonValues
                 } catch (error: Exception) {
                     throw IllegalArgumentException("Error when applying anonymization to attribute ${e.key}: ${error.message}")
                 }

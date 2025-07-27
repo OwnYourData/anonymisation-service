@@ -32,6 +32,8 @@ interface Anonymiser {
      */
     fun anonymise(values: MutableList<Any>, anonymisationCount: Int): List<JsonValue>
 
+    fun getAttributeName(attribute: String): String
+
     fun anonymiseWithNulls(values: MutableList<Any?>, anonymisationCount: Int): List<JsonValue?> {
         val nulls: List<Boolean> = values.stream().map { v -> v == null }.toList()
         val noNullsValues: MutableList<Any> = values.filterNotNull().toMutableList()

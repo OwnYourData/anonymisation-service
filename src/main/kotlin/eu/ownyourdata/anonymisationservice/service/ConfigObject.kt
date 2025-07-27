@@ -40,7 +40,7 @@ class ConfigObject(modelURL: String) {
 
     fun getAttributeObject(attribute: String): List<String> {
         return  jsonContent["@graph"]
-            .filter { node ->  node["domain"] != null && node["domain"].asText().lowercase() == attribute}
+            .filter { node ->  node["domain"] != null && node["domain"].asText() == attribute}
             .map { node -> node["@id"].asText() }
             .toList()
     }
