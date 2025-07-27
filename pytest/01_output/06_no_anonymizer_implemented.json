@@ -1,84 +1,84 @@
 {
-  "version": "1.0.0",
-  "valid": true,
   "anonymisedData": [
     {
-      "Adresse": "Niederösterreich",
-      "Gehalt": {
-        "min": 10000.0,
-        "max": 100000.0
-      },
       "Invalid Attribute": "some value",
-      "Name": "*****"
-    },
-    {
-      "Adresse": "Niederösterreich",
-      "Gehalt": {
-        "min": 10000.0,
-        "max": 100000.0
+      "adresse_range": "*****",
+      "gehalt_range": {
+        "max": 100000.0,
+        "min": 10000.0
       },
-      "Invalid Attribute": "null",
-      "Name": "*****"
+      "name": "*****"
     },
     {
-      "Adresse": "Niederösterreich",
-      "Gehalt": {
-        "min": 10000.0,
-        "max": 100000.0
+      "Invalid Attribute": "null",
+      "adresse_range": "*****",
+      "gehalt_range": {
+        "max": 100000.0,
+        "min": 10000.0
       },
-      "Invalid Attribute": "null",
-      "Name": "*****"
+      "name": "*****"
     },
     {
-      "Adresse": "Niederösterreich",
       "Invalid Attribute": "null",
-      "Name": "*****"
-    },
-    {
-      "Adresse": "Wien",
-      "Gehalt": {
-        "min": 10000.0,
-        "max": 100000.0
+      "adresse_range": "*****",
+      "gehalt_range": {
+        "max": 100000.0,
+        "min": 10000.0
       },
-      "Invalid Attribute": "null"
+      "name": "*****"
     },
     {
-      "Gehalt": {
-        "min": 10000.0,
-        "max": 100000.0
+      "Invalid Attribute": "null",
+      "adresse_range": "*****",
+      "name": "*****"
+    },
+    {
+      "Invalid Attribute": "null",
+      "adresse_range": "*****",
+      "gehalt_range": {
+        "max": 100000.0,
+        "min": 10000.0
+      }
+    },
+    {
+      "Invalid Attribute": "null",
+      "gehalt_range": {
+        "max": 100000.0,
+        "min": 10000.0
       },
-      "Invalid Attribute": "null",
-      "Name": "*****"
+      "name": "*****"
     },
     {
-      "Adresse": "Wien",
-      "Gehalt": {
-        "min": 10000.0,
-        "max": 100000.0
+      "Invalid Attribute": "null",
+      "adresse_range": "*****",
+      "gehalt_range": {
+        "max": 100000.0,
+        "min": 10000.0
       },
-      "Invalid Attribute": "null",
-      "Name": "*****"
+      "name": "*****"
     },
     {
-      "Adresse": "Wien",
-      "Gehalt": {
-        "min": 10000.0,
-        "max": 100000.0
+      "Invalid Attribute": "null",
+      "adresse_range": "*****",
+      "gehalt_range": {
+        "max": 100000.0,
+        "min": 10000.0
       },
-      "Invalid Attribute": "null",
-      "Name": "*****"
+      "name": "*****"
     },
     {
       "Invalid Attribute": "null",
-      "Name": "*****"
+      "name": "*****"
     },
     {
-      "Gehalt": {
-        "min": 10000.0,
-        "max": 100000.0
+      "Invalid Attribute": "null",
+      "gehalt_range": {
+        "max": 100000.0,
+        "min": 10000.0
       },
-      "Invalid Attribute": "null",
-      "Name": "*****"
+      "name": "*****"
     }
-  ]
+  ],
+  "valid": true,
+  "version": "1.0.0"
 }

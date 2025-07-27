@@ -39,10 +39,14 @@ class GeneralizationDate: Generalization<LocalDate>() {
                 values.min().plusDays(ChronoUnit.DAYS.between(values.min(), prevVal)/2)
             } else values.min()
             val resultJson = Json.createObjectBuilder()
-            resultJson.add("max", i != 0)
+            resultJson.add("max", upperBound.toString())
             resultJson.add("min", lowerBound.toString())
             quantileValues[resultJson.build()] = indices
         }
         return quantileValues
+    }
+
+    override fun getAttributeName(attribute: String): String {
+        return attribute + "_date_range"
     }
 }

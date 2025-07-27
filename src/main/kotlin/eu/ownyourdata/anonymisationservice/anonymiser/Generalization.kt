@@ -25,6 +25,10 @@ abstract class Generalization<T : Comparable<T>>: Anonymiser {
             .toList()
     }
 
+    override fun getAttributeName(attribute: String): String {
+        return attribute + "_range"
+    }
+
     private fun calculateQuantile(dataSize: Int, nrQuantile: Int, index: Int): Int {
         return nrQuantile * index / dataSize
     }

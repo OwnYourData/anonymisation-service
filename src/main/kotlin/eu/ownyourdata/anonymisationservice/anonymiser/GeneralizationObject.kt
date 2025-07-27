@@ -17,8 +17,8 @@ open class GeneralizationObject(objectAttributes: List<String>) : Anonymiser {
         val objectValues = values.mapIndexed { index, value ->
             try {
                 val map = value as? Map<*, *>
-                map!!.mapKeys { (key, _) -> key.toString().lowercase() }
-                Pair(index, map.mapKeys { (key, _) -> key.toString().lowercase() })
+                map!!.mapKeys { (key, _) -> key.toString() }
+                Pair(index, map.mapKeys { (key, _) -> key.toString() })
             } catch (e: Exception) {
                 throw IllegalArgumentException("Values could not be extracted from attribute.")
             }
@@ -33,6 +33,10 @@ open class GeneralizationObject(objectAttributes: List<String>) : Anonymiser {
             if (!vals.isNullOrEmpty()) return vals.stream().map { value -> Json.createValue(value) }.toList()
         }
         return values.stream().map { Json.createValue("*****") }.toList()
+    }
+
+    override fun getAttributeName(attribute: String): String {
+        return attribute + "_range"
     }
 
     private fun checkGeneralizationLevel(generalization: Map<String, List<Int>>): List<String>? {
