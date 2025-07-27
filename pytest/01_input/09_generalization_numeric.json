@@ -2,60 +2,60 @@
     "configurationURL": "https://soya.ownyourdata.eu/AnonymisationDemo",
     "data":[
         {
-            "Gehalt": 10000
+            "gehalt": 10000
         },
         {
-            "Gehalt": 100000
-        },
-        {
-        },
-        {
-            "Gehalt": 70000
-        },
-        {
-            "Gehalt": 45000
-        },
-        {
-            "Gehalt": 12000
+            "gehalt": 100000
         },
         {
         },
         {
-            "Gehalt": 30000
+            "gehalt": 70000
         },
         {
-            "Gehalt": 50000
+            "gehalt": 45000
         },
         {
-            "Gehalt": 20000
-        },
-        {
-            "Gehalt": 10000
-        },
-        {
-            "Gehalt": 100000
+            "gehalt": 12000
         },
         {
         },
         {
-            "Gehalt": 70000
+            "gehalt": 30000
         },
         {
-            "Gehalt": 45000
+            "gehalt": 50000
         },
         {
-            "Gehalt": 12000
+            "gehalt": 20000
+        },
+        {
+            "gehalt": 10000
+        },
+        {
+            "gehalt": 100000
         },
         {
         },
         {
-            "Gehalt": 30000
+            "gehalt": 70000
         },
         {
-            "Gehalt": 50000
+            "gehalt": 45000
         },
         {
-            "Gehalt": 20000
+            "gehalt": 12000
+        },
+        {
+        },
+        {
+            "gehalt": 30000
+        },
+        {
+            "gehalt": 50000
+        },
+        {
+            "gehalt": 20000
         }
     ]
 }

@@ -3,101 +3,101 @@
   "valid": true,
   "anonymisedData": [
     {
-      "Gehalt": {
+      "gehalt_range": {
         "min": 10000.0,
         "max": 37500.0
       }
     },
     {
-      "Gehalt": {
+      "gehalt_range": {
         "min": 37500.0,
         "max": 100000.0
       }
     },
     {},
     {
-      "Gehalt": {
+      "gehalt_range": {
         "min": 37500.0,
         "max": 100000.0
       }
     },
     {
-      "Gehalt": {
+      "gehalt_range": {
         "min": 37500.0,
         "max": 100000.0
       }
     },
     {
-      "Gehalt": {
+      "gehalt_range": {
         "min": 10000.0,
         "max": 37500.0
       }
     },
     {},
     {
-      "Gehalt": {
+      "gehalt_range": {
         "min": 10000.0,
         "max": 37500.0
       }
     },
     {
-      "Gehalt": {
+      "gehalt_range": {
         "min": 37500.0,
         "max": 100000.0
       }
     },
     {
-      "Gehalt": {
+      "gehalt_range": {
         "min": 10000.0,
         "max": 37500.0
       }
     },
     {
-      "Gehalt": {
+      "gehalt_range": {
         "min": 10000.0,
         "max": 37500.0
       }
     },
     {
-      "Gehalt": {
+      "gehalt_range": {
         "min": 37500.0,
         "max": 100000.0
       }
     },
     {},
     {
-      "Gehalt": {
+      "gehalt_range": {
         "min": 37500.0,
         "max": 100000.0
       }
     },
     {
-      "Gehalt": {
+      "gehalt_range": {
         "min": 37500.0,
         "max": 100000.0
       }
     },
     {
-      "Gehalt": {
+      "gehalt_range": {
         "min": 10000.0,
         "max": 37500.0
       }
     },
     {},
     {
-      "Gehalt": {
+      "gehalt_range": {
         "min": 10000.0,
         "max": 37500.0
       }
     },
     {
-      "Gehalt": {
+      "gehalt_range": {
         "min": 37500.0,
         "max": 100000.0
       }
     },
     {
-      "Gehalt": {
+      "gehalt_range": {
         "min": 10000.0,
         "max": 37500.0
       }
