@@ -2,10 +2,10 @@
     "configurationURL": "https://soya.ownyourdata.eu/AnonymisationDemo",
     "data":[
         {
-            "Adresse": "Musterstraße 4, 2040 Melk, Österreich"
+            "adresse": "Musterstraße 4, 2040 Melk, Österreich"
         },
         {
-            "Adresse": {
+            "adresse": {
                 "Detail": "Musterstraße 1",
                 "City": "Melk",
                 "Zip": 2040,
@@ -14,7 +14,7 @@
             }
         },
         {
-            "Adresse": {
+            "adresse": {
                 "Detail": "Musterstraße 2",
                 "City": "St-Pölten",
                 "Zip": 2020,
@@ -23,7 +23,7 @@
             }
         },
         {
-            "Adresse": {
+            "adresse": {
                 "Detail": "Musterstraße 2",
                 "City": "St-Pölten",
                 "Zip": 2020,
@@ -32,7 +32,7 @@
             }
         },
         {
-            "Adresse": {
+            "adresse": {
                 "Detail": "Musterstraße 3",
                 "City": "Wien",
                 "Zip": 1010,
@@ -41,7 +41,7 @@
             }
         },
         {
-            "Adresse": {
+            "adresse": {
                 "Detail": "Musterstraße 3",
                 "City": "Wien",
                 "Zip": 1010,
@@ -50,7 +50,7 @@
             }
         },
         {
-            "Adresse": {
+            "adresse": {
                 "Detail": "Musterstraße 3",
                 "City": "Wien",
                 "Zip": 1010,
@@ -59,7 +59,7 @@
             }
         },
         {
-            "Adresse": {
+            "adresse": {
                 "Detail": "Musterstraße 4",
                 "City": "Wien",
                 "Zip": 1010,
@@ -68,7 +68,7 @@
             }
         },
         {
-            "Adresse": {
+            "adresse": {
                 "Detail": "Musterstraße 3",
                 "City": "Wien",
                 "Zip": 1010,
@@ -77,7 +77,7 @@
             }
         },
         {
-            "Adresse": {
+            "adresse": {
                 "Detail": "Musterstraße 3",
                 "City": "Wien",
                 "Zip": 1010,

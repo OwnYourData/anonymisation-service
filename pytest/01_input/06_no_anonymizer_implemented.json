@@ -2,42 +2,42 @@
     "configurationURL": "https://soya.ownyourdata.eu/AnonymisationDemo",
     "data":[
         {
-            "Name": "Name 1",
-            "Adresse": {
+            "name": "Name 1",
+            "adresse": {
                 "Detail": "Musterstraße 1",
                 "City": "St-Pölten",
                 "Zip": 2020,
                 "State": "Niederösterreich",
                 "Country": "Österreich"
             },
-            "Gehalt": 10000,
+            "gehalt": 10000,
             "Invalid Attribute": "some value"
         },
         {
-            "Name": "Name 2",
-            "Adresse": {
+            "name": "Name 2",
+            "adresse": {
                 "Detail": "Musterstraße 1",
                 "City": "Melk",
                 "Zip": 2040,
                 "State": "Niederösterreich",
                 "Country": "Österreich"
             },
-            "Gehalt": 100000
+            "gehalt": 100000
         },
         {
-            "Name": "Name 3",
-            "Adresse": {
+            "name": "Name 3",
+            "adresse": {
                 "Detail": "Musterstraße 2",
                 "City": "St-Pölten",
                 "Zip": 2020,
                 "State": "Niederösterreich",
                 "Country": "Österreich"
             },
-            "Gehalt": 40000
+            "gehalt": 40000
         },
         {
-            "Name": "Name 4",
-            "Adresse": {
+            "name": "Name 4",
+            "adresse": {
                 "Detail": "Musterstraße 2",
                 "City": "St-Pölten",
                 "Zip": 2020,
@@ -46,47 +46,47 @@
             }
         },
         {
-            "Adresse": {
+            "adresse": {
                 "Detail": "Musterstraße 3",
                 "City": "Wien",
                 "Zip": 1010,
                 "State": "Wien",
                 "Country": "Österreich"
             },
-            "Gehalt": 45000
+            "gehalt": 45000
         },
         {
-            "Name": "Name 6",
-            "Gehalt": 12000
+            "name": "Name 6",
+            "gehalt": 12000
         },
         {
-            "Name": "Name 7",
-            "Adresse": {
+            "name": "Name 7",
+            "adresse": {
                 "Detail": "Musterstraße 3",
                 "City": "Wien",
                 "Zip": 1010,
                 "State": "Wien",
                 "Country": "Österreich"
             },
-            "Gehalt": 10000
+            "gehalt": 10000
         },
         {
-            "Name": "Name 8",
-            "Adresse": {
+            "name": "Name 8",
+            "adresse": {
                 "Detail": "Musterstraße 4",
                 "City": "Wien",
                 "Zip": 1010,
                 "State": "Wien",
                 "Country": "Österreich"
             },
-            "Gehalt": 30000
+            "gehalt": 30000
         },
         {
-            "Name": "Name 9"
+            "name": "Name 9"
         },
         {
-            "Name": "Name 10",
-            "Gehalt": 20000
+            "name": "Name 10",
+            "gehalt": 20000
         }
     ]
 }
