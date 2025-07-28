@@ -1,13 +1,36 @@
 {
-  "anonymisedData": [{"adresse_range": "*****"},
-                    {"adresse_range": "*****"},
-                    {"adresse_range": "*****"},
-                    {"adresse_range": "*****"},
-                    {"adresse_range": "*****"},
-                    {"adresse_range": "*****"},
-                    {"adresse_range": "*****"},
-                    {"adresse_range": "*****"},
-                    {"adresse_range": "*****"},
-                    {"adresse_range": "*****"}],
- "valid": true,
- "version": "1.0.0"}
+  "anonymisedData": [
+    {
+      "adresse": "Österreich"
+    },
+    {
+      "adresse": "Österreich"
+    },
+    {
+      "adresse": "Österreich"
+    },
+    {
+      "adresse": "Österreich"
+    },
+    {
+      "adresse": "Österreich"
+    },
+    {
+      "adresse": "Österreich"
+    },
+    {
+      "adresse": "Österreich"
+    },
+    {
+      "adresse": "Österreich"
+    },
+    {
+      "adresse": "Österreich"
+    },
+    {
+      "adresse": "Österreich"
+    }
+  ],
+  "valid": true,
+  "version": "1.0.0"
+}

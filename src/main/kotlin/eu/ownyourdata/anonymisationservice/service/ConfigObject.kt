@@ -39,10 +39,11 @@ class ConfigObject(modelURL: String) {
     }
 
     fun getAttributeObject(attribute: String): List<String> {
-        return  jsonContent["@graph"]
+        val test: List<String> = jsonContent["@graph"]
             .filter { node ->  node["domain"] != null && node["domain"].asText() == attribute}
             .map { node -> node["@id"].asText() }
             .toList()
+        return test
     }
 
     private fun fetchInputStream(urlString: String): InputStream {

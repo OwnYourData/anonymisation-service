@@ -1,13 +1,36 @@
 {
-  "anonymisedData": [{"adresse_range": "*****"},
-                    {"adresse_range": "*****"},
-                    {"adresse_range": "*****"},
-                    {"adresse_range": "*****"},
-                    {"adresse_range": "*****"},
-                    {"adresse_range": "*****"},
-                    {"adresse_range": "*****"},
-                    {"adresse_range": "*****"},
-                    {"adresse_range": "*****"},
-                    {"adresse_range": "*****"}],
- "valid": true,
- "version": "1.0.0"}
+  "anonymisedData": [
+    {
+      "adresse": "Niederösterreich"
+    },
+    {
+      "adresse": "Niederösterreich"
+    },
+    {
+      "adresse": "Niederösterreich"
+    },
+    {
+      "adresse": "Niederösterreich"
+    },
+    {
+      "adresse": "Wien"
+    },
+    {
+      "adresse": "Wien"
+    },
+    {
+      "adresse": "Wien"
+    },
+    {
+      "adresse": "Wien"
+    },
+    {
+      "adresse": "Wien"
+    },
+    {
+      "adresse": "Wien"
+    }
+  ],
+  "valid": true,
+  "version": "1.0.0"
+}
