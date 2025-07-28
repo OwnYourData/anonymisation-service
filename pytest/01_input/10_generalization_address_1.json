@@ -3,92 +3,92 @@
     "data":[
         {
             "adresse": {
-                "Detail": "Musterstraße 1",
-                "City": "St-Pölten",
-                "Zip": 2020,
-                "State": "Niederösterreich",
-                "Country": "Österreich"
+                "detail": "Musterstraße 1",
+                "city": "St-Pölten",
+                "zip": 2020,
+                "state": "Niederösterreich",
+                "country": "Österreich"
             }
         },
         {
             "adresse": {
-                "Detail": "Musterstraße 1",
-                "City": "Melk",
-                "Zip": 2040,
-                "State": "Niederösterreich",
-                "Country": "Österreich"
+                "detail": "Musterstraße 1",
+                "city": "Melk",
+                "zip": 2040,
+                "state": "Niederösterreich",
+                "country": "Österreich"
             }
         },
         {
             "adresse": {
-                "Detail": "Musterstraße 2",
-                "City": "St-Pölten",
-                "Zip": 2020,
-                "State": "Niederösterreich",
-                "Country": "Österreich"
+                "detail": "Musterstraße 2",
+                "city": "St-Pölten",
+                "zip": 2020,
+                "state": "Niederösterreich",
+                "country": "Österreich"
             }
         },
         {
             "adresse": {
-                "Detail": "Musterstraße 2",
-                "City": "St-Pölten",
-                "Zip": 2020,
-                "State": "Niederösterreich",
-                "Country": "Österreich"
+                "detail": "Musterstraße 2",
+                "city": "St-Pölten",
+                "zip": 2020,
+                "state": "Niederösterreich",
+                "country": "Österreich"
             }
         },
         {
             "adresse": {
-                "Detail": "Musterstraße 3",
-                "City": "Wien",
-                "Zip": 1010,
-                "State": "Wien",
-                "Country": "Österreich"
+                "detail": "Musterstraße 3",
+                "city": "Wien",
+                "zip": 1010,
+                "state": "Wien",
+                "country": "Österreich"
             }
         },
         {
             "adresse": {
-                "Detail": "Musterstraße 3",
-                "City": "Wien",
-                "Zip": 1010,
-                "State": "Wien",
-                "Country": "Österreich"
+                "detail": "Musterstraße 3",
+                "city": "Wien",
+                "zip": 1010,
+                "state": "Wien",
+                "country": "Österreich"
             }
         },
         {
             "adresse": {
-                "Detail": "Musterstraße 3",
-                "City": "Wien",
-                "Zip": 1010,
-                "State": "Wien",
-                "Country": "Österreich"
+                "detail": "Musterstraße 3",
+                "city": "Wien",
+                "zip": 1010,
+                "state": "Wien",
+                "country": "Österreich"
             }
         },
         {
             "adresse": {
-                "Detail": "Musterstraße 4",
-                "City": "Wien",
-                "Zip": 1010,
-                "State": "Wien",
-                "Country": "Österreich"
+                "detail": "Musterstraße 4",
+                "city": "Wien",
+                "zip": 1010,
+                "state": "Wien",
+                "country": "Österreich"
             }
         },
         {
             "adresse": {
-                "Detail": "Musterstraße 3",
-                "City": "Wien",
-                "Zip": 1010,
-                "State": "Wien",
-                "Country": "Österreich"
+                "detail": "Musterstraße 3",
+                "city": "Wien",
+                "zip": 1010,
+                "state": "Wien",
+                "country": "Österreich"
             }
         },
         {
             "adresse": {
-                "Detail": "Musterstraße 3",
-                "City": "Wien",
-                "Zip": 1010,
-                "State": "Wien",
-                "Country": "Österreich"
+                "detail": "Musterstraße 3",
+                "city": "Wien",
+                "zip": 1010,
+                "state": "Wien",
+                "country": "Österreich"
             }
         }
     ]

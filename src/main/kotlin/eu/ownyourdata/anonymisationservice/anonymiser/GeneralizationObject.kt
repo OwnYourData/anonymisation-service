@@ -36,7 +36,7 @@ open class GeneralizationObject(objectAttributes: List<String>) : Anonymiser {
     }
 
     override fun getAttributeName(attribute: String): String {
-        return attribute + "_range"
+        return attribute
     }
 
     private fun checkGeneralizationLevel(generalization: Map<String, List<Int>>): List<String>? {

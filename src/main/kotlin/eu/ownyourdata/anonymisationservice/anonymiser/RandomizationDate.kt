@@ -52,8 +52,4 @@ class RandomizationDate: Randomization<LocalDate>() {
     override fun distance(val1: LocalDate, val2: LocalDate): Double {
         return ChronoUnit.DAYS.between(val1, val2).toDouble()
     }
-
-    override fun getAttributeName(attribute: String): String {
-        return attribute + "_date_range"
-    }
 }

@@ -15,7 +15,7 @@ fun anonymizerFactory(config: Configuration, configObject: ConfigObject): Anonym
             "date" -> GeneralizationDate()
             "integer" -> GeneralizationNumeric()
             "string" -> throw IllegalArgumentException("The Datatype String is not allowed for generalization")
-            else -> GeneralizationObject(configObject.getAttributeObject(config.datatype.lowercase()))
+            else -> GeneralizationObject(configObject.getAttributeObject(config.datatype))
         }
         AnonymizationType.RANDOMIZATION -> when (config.datatype) {
             "date" -> RandomizationDate()
